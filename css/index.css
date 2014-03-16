@@ -42,22 +42,9 @@ table {
 	border-spacing: 0;
 }
 /**********************************************/
-
-table#field {
-	table-layout:fixed;
-	width:100%;
-	height:100%;
-	background:red;
-}
-table#field td {
-	border:1px solid #000;
-	background:yellow;
-}
-
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
-
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -66,6 +53,21 @@ body {
     font-size:12px;
     height:100%;
     width:100%;
+}
+table#field {
+	table-layout:fixed;
+	width:100%;
+	height:100%;
+}
+table#field td {
+	border:1px solid #000;
+	background:yellow;
+}
+.bomb {
+	background:red;
+}
+.flag {
+	background:green;
 }
 
 /* Landscape layout (with min-width) */
