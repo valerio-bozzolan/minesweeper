@@ -29,23 +29,45 @@ var game_max_y;
 var game_flags;
 var game_bombs;
 
-new_game(8, 8);
-
-$(".play").click(function() {
-	new_game(8, 8);
+$(function() {
+	$(".play").click(function() {
+		ask_new_game();
+	});
+	$("#dialog").dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1000
+		},
+		hide: {
+			effect: "explode",
+			duration: 1000
+		}
+	});
+	$("#dialog-close").click(function() {
+		if(new_game($("#bombs").val(), $("#n_x").val())) {
+			$("#dialog").dialog("close");			
+		} else {
+			alert("Sorry, decrease bombs.");
+		}
+	});
+	ask_new_game();
 });
 
 function new_game(bombs, Nx) {
 	GUI_clear_table();
 	set_bombs(bombs);
-	game_prepare(Nx);
+	if(!game_prepare(Nx)) {
+		return false;
+	}
 	$("table#" + field_ID + " td").click(function() {
 		var x = $(this).parent().children().index($(this));
 		var y = $(this).parent().parent().children().index($(this).parent());
 		switch(game[x][y]) {
 			case 0:
 				GUI_set_bomb(x, y);
-				alert("Hai perso");
+				alert("You lose.");
+				ask_new_game();
 				break;
 			case 1:
 				game[x][y] = 2;
@@ -59,6 +81,11 @@ function new_game(bombs, Nx) {
 				break;
 		}
 	});
+	return true;
+}
+
+function ask_new_game() {
+	$("#dialog").dialog("open");
 }
 
 function game_prepare(Nx) {
@@ -80,6 +107,7 @@ function game_prepare(Nx) {
 	for(var i=0; i<game_bombs; i++) {
 		game[ candidates[i][0] ][ candidates[i][1] ] = 0; // Element elected as bomb
 	}
+	return true;
 }
 
 function create_field_from_Nx(Nx) {
