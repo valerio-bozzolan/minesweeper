@@ -35,6 +35,7 @@ $("table#" + field_ID + " td").click(function() {
 	var x = $(this).parent().children().index($(this));
 	var y = $(this).parent().parent().children().index($(this).parent());
 	if(game[x][y]) {
+		field_indicate_as_bomb(x, y);
 		alert("Hai perso");
 	} else {
 		field_indicate_as_flag(x, y);
@@ -100,6 +101,10 @@ function field_change_CSS_side(side) {
 
 function field_indicate_as_flag(x, y) {
 	$("tr").eq(y).find("td").eq(x).css("background", "grey");
+}
+
+function field_indicate_as_bomb(x, y) {
+	$("tr").eq(y).find("td").eq(x).css("background", "red");
 }
 
 function shuffle(o) {
