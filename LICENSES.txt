@@ -1,4 +1,12 @@
-* /jquery
+External libraries, licenses and thanks
+
+* /js/jquery
+* /jquery-ui
+* /jquery.mobile
 	jQuery v2.0.2
 	(c) 2005, 2013 jQuery Foundation, Inc.
-	http://jquery.org/license
+	https://jquery.org/license/
+
+* /pressAndHold
+	Thanks to santhony7
+	https://github.com/santhony7/pressAndHold/

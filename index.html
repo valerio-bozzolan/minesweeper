@@ -21,45 +21,57 @@
 <head>
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
-<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
-<link rel="stylesheet" type="text/css" href="jquery-ui/css/smoothness/jquery-ui-1.10.4.custom.min.css" />
+<link rel="stylesheet" type="text/css" href="jquery.mobile/jquery.mobile-1.4.2.min.css" />
 <title>MineSweeper</title>
 </head>
 <body>
-	<div id="navigation">
-		<button class="play">New Game</button> |
+<div data-role="page" id="index">
+	<div id="navigation" data-role="header">
+		<a href="#page-start-new-game" data-icon="gear" class="ui-btn-right" data-rel="dialog" data-transition="slidedown" data-close-btn="none">Start new game</a>
+		<span class="ui-title" />
+	</div>
+	<div role="main" class="ui-content">
+		<table id="field"></table>
+	</div>
+	<div id="footer" data-role="footer">
 		Flags: <span class="flags-counter"></span> |
 		Bombs: <span class="bombs-counter"></span>
 	</div>
-	<table id="field" cellspacing="0"></table>
-	<div id="dialog" title="New Game">
-		<form>
-		<p>How many big your field?<br />
-		<select id="n_x" name="n_x">
-			<option value="8">Small</option>
-			<option value="12">Medium</option>
-			<option value="16">Big</option>
-		<select></p>
-		<p>How many bombs?</p>
-		<select id="bombs" name="bombs">
-			<option value="8">Normal level</option>
-			<option value="12">Medium level</option>
-			<option value="16">Big level</option>
-		<select></p>
+</div>
+<div data-role="page" id="page-start-new-game">
+	<div data-role="content">
 		<p>
-			<button type="button" id="dialog-close">PLAY</button>
+			<label for="n_x">Field size</label>
+			<select id="n_x" name="n_x">
+				<option value="8">Small</option>
+				<option value="12">Medium</option>
+				<option value="16">Big</option>
+			</select>
 		</p>
-		</form>
+		<p>
+			<label for="bombs">Bombs number</label>
+			<select id="bombs" name="bombs">
+				<option value="8">Normal level</option>
+				<option value="12">Medium level</option>
+				<option value="16">Big level</option>
+			</select>
+		</p>
+		<p>
+			<a href="#index" class="ui-btn">PLAY</a>
+		</p>
 	</div>
-	<script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript">
-	    app.initialize();
-	</script>
-	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="jquery-ui/js/jquery-ui-1.10.4.custom.min.js"></script>
-	<script type="text/javascript" src="js/minesweeper.js"></script>
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<!--<script type="text/javascript">
+    app.initialize();
+</script>-->
+<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/minesweeper.js"></script>
+<script type="text/javascript" src="js/jquery-events.js"></script>
 </body>
 </html>
