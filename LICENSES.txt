@@ -1,12 +1,16 @@
-External libraries, licenses and thanks
+MineSweeper is under the terms of the GNU General Public License v3.
+	https://www.gnu.org/licenses/gpl.txt
 
-* /js/jquery
-* /jquery-ui
-* /jquery.mobile
+External libraries may have different licenses:
+
+*PhoneGap
+*Cordova
+	http://phonegap.com
+	http://cordova.apache.org
+	http://www.apache.org/licenses/LICENSE-2.0
+
+* /jquery/*
+* /jquery.mobile/*
 	jQuery v2.0.2
 	(c) 2005, 2013 jQuery Foundation, Inc.
 	https://jquery.org/license/
-
-* /pressAndHold
-	Thanks to santhony7
-	https://github.com/santhony7/pressAndHold/

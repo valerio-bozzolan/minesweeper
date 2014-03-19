@@ -10,10 +10,6 @@
  * 	0: x
  *	1: y
  *
- * Game type legend:
- *	2: Flagged
- * 	1: Nothing
- *	0: Default
  */
 
 /**
@@ -26,7 +22,11 @@ var field_el_tappable_name = "table td button";
 /**
  * CSS properties
  */
-var CSS_side_borders = 2; // px
+var CSS_side_borders = 2; // 1 px dx + 1 px sx
+var CSS = {
+	side_borders:2,
+	content_innerWidth:0, // This is not a default value
+	};
 
 /**
  * jQuery elements
@@ -38,26 +38,21 @@ var field_el_tappable;
 /**
  * Global vars
  */
-var game = new Array(); // [x][y] = [is_bomb : boolean, type: int];
+var game; // [x][y] = [is_bomb : boolean, type: int];
 var game_max_x;
 var game_max_y;
 var game_flags;
 var game_bombs;
+var TYPE = {DEFAULT:0, NOTHING:1, FLAGGED:2};
 
 function new_game(bombs, Nx) {
 	GUI_clear_table();
 	set_bombs(bombs);
-	if(!game_prepare(Nx)) {
-		return false;
-	}
-
-	return true;
+	return game_prepare(Nx);
 }
-
 function ask_new_game() {
-	// ******************************************************
+	$.mobile.navigate("#page-start-new-game");
 }
-
 function game_prepare(Nx) {
 	game = new Array();
 	var candidates = new Array();
@@ -66,7 +61,7 @@ function game_prepare(Nx) {
 	for(var i=0; i<game_max_x; i++) {
 		game[i] = new Array();
 		for(var j=0; j<game_max_y; j++) {
-			game[i][j] = {is_bomb:false, type:0}; // Reset game
+			game[i][j] = {is_bomb:false, type:TYPE.DEFAULT}; // Reset game
 			candidates.push(new Array(i, j));
 		}
 	}
@@ -116,22 +111,20 @@ function create_field_from_side(side) {
 
 	GUI_set_side(side);
 }
-
 function get_Nx_from_side(side) {
-	return float2int(window.innerWidth / side);
+	return float2int(CSS.content_innerWidth / side);
 }
-
 function get_Ny_from_side(side) {
-	var less = $("div#navigation").innerHeight() + $("div#footer").innerHeight(); // Menù prima o dopo del campo di gioco
+	var less = $("div#header").innerHeight() + $("div#footer").innerHeight(); // Menù prima o dopo del campo di gioco
 	return float2int((window.innerHeight - less) / side);
 }
 function set_bombs(n) {
 	game_bombs = n;
-	$(".bombs-counter").html(n);
+	$(".bombs-counter").text(n);
 }
 function set_flags_counter(n) {
 	game_flags = n;
-	$(".flags-counter").html(n);
+	$(".flags-counter").text(n);
 }
 function increase_flags_counter() {
 	set_flags_counter(game_flags + 1);
@@ -167,8 +160,11 @@ function user_set_bomb(x, y) {
 		ask_new_game();
 	} else {
 		switch(game[x][y].type) {
-			case 0:
+			case TYPE.DEFAULT:
 				GUI_print_number(x, y);
+				break;
+			case TYPE.FLAGGED:
+				// Toast notification
 				break;
 			default:
 				// There is a flag or there is nothing. First user have to remove the flag
@@ -177,42 +173,46 @@ function user_set_bomb(x, y) {
 }
 function user_set_flag(x, y) {
 	switch(game[x][y].type) {
-		case 0:
-			game[x][y].type = 2;
+		case TYPE.DEFAULT:
+			game[x][y].type = TYPE.FLAGGED;
 			increase_flags_counter();
 			GUI_set_flag(x, y);
 			break;
-		case 2:
-			game[x][y].type = 0;
+		case TYPE.FLAGGED:
+			game[x][y].type = TYPE.DEFAULT;
 			decrease_flags_counter();
 			GUI_set_reset(x, y);
 			break;
 	}
+}
+function set_nothing(x, y) {
+	game[x][y].type = TYPE.NOTHING;
+	GUI_set_nothing(x, y);
 }
 
 /**
  * GUI functions
  */
 function GUI_print_number(x, y) {
-	GUI_set_nothing(x, y);
+	alert("Set nothing "+x+" " + y);
+	set_nothing(x, y);
 	var near = 0;
 	var rounds = get_rounds(x, y);
 	for(var i=0; i<8; i++) {
-		if(is_bomb(rounds[i][0], rounds[i][1])) {
+		var xx = rounds[i][0];
+		var yy = rounds[i][1];
+		if(is_bomb(xx, yy)) {
 			near++;
+		} else if(have_sense(xx, yy) && game[xx][yy].type != TYPE.NOTHING) {
+			GUI_set_nothing(xx, yy);
+			GUI_print_number(xx, yy);
 		}
 	}
 
-	// No bomb? All => nothing
 	if(!near) {
 		near = " ";
-		for(var i=0; i<8; i++) {
-			if(have_sense(rounds[i][0], rounds[i][1])) {
-				GUI_set_nothing(rounds[i][0], rounds[i][1]);
-			}
-		}
 	}
-	GUI_get_element(x, y).html(near);
+	GUI_get_element(x, y).text(near);
 }
 function GUI_get_element(x, y) {
 	return $("tr").eq(y).find("td button").eq(x);
@@ -232,16 +232,16 @@ function GUI_set_bomb(x, y) {
 	GUI_get_element(x, y).css("background", "red");
 }
 function GUI_set_nothing(x, y) {
-	GUI_get_element(x, y).css("background", "green");
+	GUI_get_element(x, y).css("background", "green").attr("disabled", "disabled");
 }
 function GUI_set_reset(x, y) {
-	GUI_get_element(x, y).css("background", "none");
+	GUI_get_element(x, y).css("background", "grey");
 }
 function GUI_set_side(side) {
-	field_el.width(side - CSS_side_borders);
-	field_el.height(side - CSS_side_borders);
-	field_el.css("maxWidth", (side - CSS_side_borders) + "px");
-	field_el.css("maxHeight", (side - CSS_side_borders) + "px");
+	field_el.width(side - CSS.side_borders);
+	field_el.height(side - CSS.side_borders);
+	field_el.css("maxWidth", (side - CSS.side_borders) + "px");
+	field_el.css("maxHeight", (side - CSS.side_borders) + "px");
 }
 function GUI_clear_table() {
 	field.empty();
