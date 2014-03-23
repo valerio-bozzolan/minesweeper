@@ -1,5 +1,7 @@
 $(function() {
-	field = $(field_name);
+	$.event.special.tap.emitTapOnTaphold = false;
+
+	field = $(MINESWEEPER.FIELD);
 
 	$(".play").click(function() {
 		ask_new_game();
@@ -15,6 +17,10 @@ $(function() {
 			event.preventDefault();
 		}
 	});
+
+	// Tap event: in minesweeper.js (function create_field_from_side(side))
+
+	// Tap hold event: in minesweeper.js (function create_field_from_side(side))
 
 	ask_new_game();
 });
