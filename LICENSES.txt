@@ -14,3 +14,7 @@ External libraries may have different licenses:
 	jQuery v2.0.2
 	(c) 2005, 2013 jQuery Foundation, Inc.
 	https://jquery.org/license/
+
+* /js/minesweeper.js (Only `shuffle` function)
+	Shuffler [rev. #1], by Jonas Raoni Soares Silva
+	http://jsfromhell.com/array/shuffle

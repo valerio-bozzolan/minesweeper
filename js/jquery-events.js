@@ -4,7 +4,7 @@ $(function() {
 	field = $(MINESWEEPER.FIELD);
 
 	$(".play").click(function() {
-		ask_new_game();
+		GUI_ask_new_game();
 	});
 
 	CSS.content_innerWidth = $("div#content").innerWidth() - 32; // 16px + 16px of padding
@@ -18,9 +18,5 @@ $(function() {
 		}
 	});
 
-	// Tap event: in minesweeper.js (function create_field_from_side(side))
-
-	// Tap hold event: in minesweeper.js (function create_field_from_side(side))
-
-	ask_new_game();
+	GUI_ask_new_game();
 });
