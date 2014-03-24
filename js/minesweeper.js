@@ -47,14 +47,11 @@ var game_win;
  * Game functions
  */
 function new_game(bombs, Nx) {
-	GUI_clear_table();
-	set_bombs(bombs);
-	return game_prepare(Nx);
-}
-function game_prepare(Nx) {
 	var candidates = new Array();
 	cells = new Array();
+	GUI_clear_table();
 	create_field_from_Nx(Nx);
+	set_bombs(float2int((game_max_x * game_max_y * bombs) / 100));
 	for(var x=0; x<game_max_x; x++) {
 		cells[x] = new Array();
 		for(var y=0; y<game_max_y; y++) {
@@ -308,7 +305,6 @@ function GUI_alert_user_lose() {
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
-	GUI_ask_new_game();
 }
 
 /**

@@ -11,17 +11,17 @@
 <body>
 <div data-role="page" id="index">
 	<div data-role="header" id="header">
-		<div class="ui-grid-b">
-			<div class="ui-block-a">
-				<button data-icon="back" data-inline="true" data-mini="true" class="open-new-game-page">New Game</button>
-			</div>
-			<div class="ui-block-b">
-				<h1>Open MineSweeper</h1>
-			</div>
-			<div class="ui-block-c">
-				<p data-inline="true">Flags: <span class="flags-counter"></span> | Bombs: <span class="bombs-counter"></span></p>
-			</div>
-		</div>
+		<button data-icon="back" data-inline="true" data-mini="true" class="open-new-game-page">New Game</button>
+		<h1>Open MineSweeper</h1>
+		<center>
+			<p>
+			<small>
+				<span class="game-difficult-label">New game</span> | 
+				<span class="flags-counter">0</span> Flags  | 
+				<span class="bombs-counter">0</span> Bombs 
+			</small>
+			</p>
+		</center>
 	</div>
 	<div role="main" class="ui-content" id="content">
 		<table id="field"></table>
@@ -32,17 +32,19 @@
 			<p>
 				<label for="n_x">Field size</label>
 				<select id="n_x" name="n_x">
-					<option value="8">Small</option>
-					<option value="12">Medium</option>
-					<option value="16">Big</option>
+					<option value="8">Big finger</option>
+					<option value="12">Normal</option>
+					<option value="15">Difficult</option>
+					<option value="20">Surgeon</option>
 				</select>
 			</p>
 			<p>
-				<label for="bombs">Bombs number</label>
+				<label for="bombs">Bombs density</label>
 				<select id="bombs" name="bombs">
-					<option value="8">Normal level</option>
-					<option value="12">Medium level</option>
-					<option value="16">Big level</option>
+					<option value="10">Normal</option>
+					<option value="15">Medium</option>
+					<option value="20">High</option>
+					<option value="50">Very-high</option>
 				</select>
 			</p>
 			<p>

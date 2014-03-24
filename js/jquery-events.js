@@ -19,6 +19,10 @@ $(function() {
 		if(!new_game(bombs, n_x)) {
 			alert("Please decrease bombs.");
 		} else {
+			$(".game-difficult-label").text(
+				$("#page-start-new-game select[name='n_x'] option:selected").text() + " in " +
+				$("#page-start-new-game select[name='bombs'] option:selected").text()
+			);
 			$("#page-start-new-game").panel("close");
 		}
 		return false;
