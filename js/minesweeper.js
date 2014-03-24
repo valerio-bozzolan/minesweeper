@@ -42,25 +42,44 @@ var game_flags;
 var game_bombs;
 var game_nothings; // No, I'm not a stupid goat: the "s" remember me that this is the plural of "how many cells with type=TYPE.NOTHING", and so that this is not an useless "nothing" var.
 var game_win;
+var first_tap;
 
 /**
  * Game functions
  */
+
+/**
+ * Reset the game
+ */
 function new_game(bombs, Nx) {
-	var candidates = new Array();
-	cells = new Array();
 	GUI_clear_table();
 	create_field_from_Nx(Nx);
 	set_bombs(float2int((game_max_x * game_max_y * bombs) / 100));
+	if(game_bombs >= game_max_x * game_max_y) {
+		return false; // Uhm? More bombs than cells?
+	}
+	set_flags_counter(0);
+	game_nothings = 0;
+	game_win = false;
+	first_tap = true;
+	return true;
+}
+/**
+ * Prevent that first bomb is collocated at `secure_start_x` and `secure_start_y` position.
+ */
+function prepare_bombs(secure_start_x, secure_start_y) {
+	cells = new Array();
+	var candidates = new Array();
 	for(var x=0; x<game_max_x; x++) {
 		cells[x] = new Array();
 		for(var y=0; y<game_max_y; y++) {
 			cells[x][y] = {is_bomb:false, type:TYPE.DEFAULT}; // Reset game
-			candidates.push( new Array(x, y) );
+			if(!(x == secure_start_x && y == secure_start_y)) {
+				candidates.push( new Array(x, y) );
+			} else {
+				console.log("Not choosen " + x + " " + y);
+			}
 		}
-	}
-	if(game_bombs >= candidates.length) {
-		return false; // Uhm? More bombs than cells?
 	}
 
 	/*
@@ -85,11 +104,6 @@ function new_game(bombs, Nx) {
 			}
 		}
 	}
-
-	set_flags_counter(0);
-	game_nothings = 0;
-	game_win = false;
-	return true;
 }
 function create_field_from_Nx(Nx) {
 	var side = float2int(window.innerWidth / Nx);
@@ -275,10 +289,18 @@ function GUI_bind_cell_events() {
 	field_el_tappable.on('tap', function() {
 		var x = GUI_get_x(this);
 		var y = GUI_get_y(this);
+		if(first_tap) {
+			prepare_bombs(x, y);
+			first_tap = false;
+		}
 		GUI_user_set_bomb(x, y);
 	}).on('taphold', function() {
 		var x = GUI_get_x(this);
 		var y = GUI_get_y(this);
+		if(first_tap) {
+			prepare_bombs(x, y);
+			first_tap = false;
+		}
 		GUI_user_set_flag(x, y);
 	});
 }
