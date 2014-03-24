@@ -3,19 +3,25 @@ $(function() {
 
 	field = $(MINESWEEPER.FIELD);
 
-	$(".play").click(function() {
-		GUI_ask_new_game();
+	$(".open-new-game-page").click(function() {
+		$("#page-start-new-game").panel("open");
+	});
+
+	$(".close-new-game-page").click(function() {
+		$("#page-start-new-game").panel("close");
 	});
 
 	CSS.content_innerWidth = $("div#content").innerWidth() - 32; // 16px + 16px of padding
 
-	$("#page-start-new-game a").click(function( event ) {
+	$(".play").click(function( event ) {
 		var bombs = $("#page-start-new-game select[name='bombs']").val();
 		var n_x   = $("#page-start-new-game select[name='n_x']").val();
 		if(!new_game(bombs, n_x)) {
 			alert("Please decrease bombs.");
-			event.preventDefault();
+		} else {
+			$("#page-start-new-game").panel("close");
 		}
+		return false;
 	});
 
 	GUI_ask_new_game();

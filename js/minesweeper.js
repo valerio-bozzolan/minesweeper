@@ -198,7 +198,7 @@ function reveal_nothing(x, y) {
  * GUI functions
  */
 function GUI_ask_new_game() {
-	$.mobile.navigate("#page-start-new-game");
+	$("#page-start-new-game").panel("open");
 }
 function GUI_user_set_bomb(x, y) {
 	switch(cells[x][y].type) {
@@ -303,6 +303,11 @@ function GUI_alert_user_win() {
 }
 function GUI_alert_user_lose() {
 	alert("You lose\n:(");
+	for(var x=0; x<game_max_x; x++) {
+		for(var y=0; y<game_max_y; y++) {
+			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
+		}
+	}
 	GUI_ask_new_game();
 }
 

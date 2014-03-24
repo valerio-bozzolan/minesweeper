@@ -10,39 +10,46 @@
 </head>
 <body>
 <div data-role="page" id="index">
-	<div data-role="header" data-position="fixed" id="header">
-		<a href="#page-start-new-game" data-icon="gear" class="ui-btn-right" data-rel="dialog" data-transition="slidedown" data-close-btn="none">Start new game</a>
-		<span class="ui-title"></span>
+	<div data-role="header" id="header">
+		<div class="ui-grid-b">
+			<div class="ui-block-a">
+				<button data-icon="back" data-inline="true" data-mini="true" class="open-new-game-page">New Game</button>
+			</div>
+			<div class="ui-block-b">
+				<h1>Open MineSweeper</h1>
+			</div>
+			<div class="ui-block-c">
+				<p data-inline="true">Flags: <span class="flags-counter"></span> | Bombs: <span class="bombs-counter"></span></p>
+			</div>
+		</div>
 	</div>
 	<div role="main" class="ui-content" id="content">
 		<table id="field"></table>
 	</div>
-	<div data-role="footer" data-position="fixed" id="footer" >
-		Flags: <span class="flags-counter"></span> |
-		Bombs: <span class="bombs-counter"></span>
-	</div>
-</div>
-<div data-role="page" id="page-start-new-game">
-	<div data-role="content">
-		<p>
-			<label for="n_x">Field size</label>
-			<select id="n_x" name="n_x">
-				<option value="8">Small</option>
-				<option value="12">Medium</option>
-				<option value="16">Big</option>
-			</select>
-		</p>
-		<p>
-			<label for="bombs">Bombs number</label>
-			<select id="bombs" name="bombs">
-				<option value="8">Normal level</option>
-				<option value="12">Medium level</option>
-				<option value="16">Big level</option>
-			</select>
-		</p>
-		<p>
-			<a href="#index" class="ui-btn">PLAY</a>
-		</p>
+	<div data-role="panel" id="page-start-new-game">
+		<div data-role="content">
+			<form>
+			<p>
+				<label for="n_x">Field size</label>
+				<select id="n_x" name="n_x">
+					<option value="8">Small</option>
+					<option value="12">Medium</option>
+					<option value="16">Big</option>
+				</select>
+			</p>
+			<p>
+				<label for="bombs">Bombs number</label>
+				<select id="bombs" name="bombs">
+					<option value="8">Normal level</option>
+					<option value="12">Medium level</option>
+					<option value="16">Big level</option>
+				</select>
+			</p>
+			<p>
+				<button type="button" class="play">PLAY</button>
+			</p>
+			</form>
+		</div>
 	</div>
 </div>
 
