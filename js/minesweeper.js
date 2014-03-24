@@ -105,7 +105,7 @@ function create_field_from_side(side) {
 	for(var y=0; y<game_max_y; y++) {
 		table += "<tr>";
 		for(var x=0; x<game_max_x; x++) {
-			table += "<td><button></button></td>";
+			table += "<td><button> </button></td>";
 		}
 		table += "</tr>";
 	}
@@ -262,7 +262,7 @@ function GUI_set_reset(x, y) {
 	GUI_get_element(x, y).css("background", "grey");
 }
 function GUI_set_nothing(x, y, n) {
-	GUI_get_element(x, y).css("background", "green").attr("disabled", "disabled");
+	GUI_get_element(x, y).css("background", "green")/*.attr("disabled", "disabled")*/;
 	GUI_get_element(x, y).text(
 		((n) ? n : " ")
 	);

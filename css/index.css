@@ -55,20 +55,25 @@ body {
     width:100%;
 }
 table#field {
-	border-spacing:0;
 	table-layout:fixed;
+	border-spacing:0;
+	border-collapse:collapse;
 	width:100%;
 	height:100%;
 	background:black;
-	border:0;
 }
 table#field td {
+	overflow: hidden;
+	word-wrap:break-word;
 	border:1px solid #000;
 }
 table#field td button {
 	width:100%;
 	height:100%;
 	background:grey;
+	margin:0;
+	padding:0;
+	border:0;
 }
 div#content {
 	width:100%;
