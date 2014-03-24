@@ -302,7 +302,10 @@ function GUI_alert_user_lose() {
 	alert("You lose\n:(");
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
-			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
+			if(cells[x][y].is_bomb) {
+					GUI_set_bomb(x, y);
+			}
+			cells[x][y].type = TYPE.BOMB; // In order to deny clicks
 		}
 	}
 }
