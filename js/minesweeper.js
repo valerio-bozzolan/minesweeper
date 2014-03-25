@@ -10,9 +10,9 @@ var CSS = {
  * DOM settings
  */
 var MINESWEEPER = {
-	FIELD:"table",
-	SINGLE_CELL:"table td",
-	SINGLE_CELL_TAPPABLE:"table td button"
+	FIELD:"table#field",
+	SINGLE_CELL:"table#field td",
+	SINGLE_CELL_TAPPABLE:"table#field td button"
 };
 
 /**
@@ -255,7 +255,7 @@ function GUI_get_y(element) {
 	return $(s).parent().parent().children().index($(s).parent());
 }
 function GUI_get_element(x, y) {
-	return $("tr").eq(y).find("td button").eq(x);
+	return $("table#field tr").eq(y).find("td button").eq(x);
 }
 function GUI_clear_table() {
 	field.empty();

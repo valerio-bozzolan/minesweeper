@@ -44,5 +44,12 @@ $(function() {
 		$(".win-times") .text( localStorage.getItem("win-times")  || 0 );
 	});
 
+	// Open links in stock browser
+	$("a.my-external").click(function () {
+		var addressValue = $(this).attr("href");
+		window.open(addressValue, '_system');
+		return false;
+	});
+
 	GUI_ask_new_game();
 });

@@ -22,7 +22,7 @@
 			</small>
 			</p>
 		</center>
-		<a href="settings.html" data-icon="gear" class="ui-btn-right" data-transition="flip">Options</a>
+		<a href="#settings" data-icon="gear" class="ui-btn-right" data-transition="flip">Options</a>
 	</div>
 	<div role="main" class="ui-content" id="content">
 		<table id="field"></table>
@@ -53,6 +53,63 @@
 			</p>
 			</form>
 		</div>
+	</div>
+</div>
+<div data-role="page" id="settings">
+	<div data-role="header" data-add-back-btn="true">
+		<h1>Open MineSweeper</h1>
+	</div>
+	<div role="main" class="ui-content">
+		<h2>Settings</h2>
+		<p>
+			<label for="username">Username</label>
+			<input type="text" name="username" id="username" placeholder="Mr. Bombarolo" />
+		</p>
+		<h2>Stats</h2>
+		<table class="ui-responsive table-stroke">
+		<tbody>
+			<tr>
+				<th>Play times</th>
+				<td><span class="play-times"></span></td>
+			</tr>
+			<tr>
+				<th>Secure zones discovered</th>
+				<td><span class="game-nothings"></span></td>
+			</tr>
+			<tr>
+				<th>Step as MineSweeper</th>
+				<td><span class="bomb-taps"></span></td>
+			</tr>
+			<tr>
+				<th>Win times</th>
+				<td><span class="win-times"></span></td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+	<div data-role="footer">
+		<ul>
+			<li>Feel free to improve this app from the <a href="https://launchpad.net/minesweeper" class="my-external">project home</a></li>
+			<li>Feel free to communicate with the <a href="http://contatti.reyboz.it" title="Valerio Bozzolan" class="my-external">founder</a> (Valerio Bozzolan)</li>
+			<li>Feel free to use this piece of <a href="#popup-license" data-rel="popup" data-transition="slide">Free and Open Source software</a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="popup-license">
+		<h3>Thank you to use this Free Software</h3>
+		<p>
+			This program is <b>free software</b>: you can <b>redistribute</b> it and/or <b>modify</b>
+			it under the terms of the GNU General Public License as published by
+			the Free Software Foundation, either version 3 of the License, or
+			(at your option) any later version.<br />
+
+			This program is distributed in the hope that it will be useful,
+			but <b>WITHOUT ANY WARRANTY</b>; without even the implied warranty of
+			MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+			GNU General Public License for more details.<br />
+
+			You should have received a copy of the GNU General Public License
+			along with this program. If not, see <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License v3.0" class="my-external">the entire license</a>.
+		</p>
 	</div>
 </div>
 
