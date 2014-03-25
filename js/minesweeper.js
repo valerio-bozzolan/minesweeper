@@ -16,6 +16,15 @@ var MINESWEEPER = {
 };
 
 /**
+ * Default settings if none in localStorage
+ */
+var DEFAULTS = {
+	USERNAME: "Mr. Bombarolo",
+	SHORT_VIBRATION: 75,
+	LONG_VIBRATION: 500
+};
+
+/**
  * Global jQuery vars
  */
 var field;
@@ -325,7 +334,6 @@ function GUI_alert_user_win() {
 	alert("Wei... Bu.. But...\nYOU WIN! :D");
 }
 function GUI_alert_user_lose() {
-	alert("You lose\n:(");
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			if(cells[x][y].is_bomb) {
@@ -335,21 +343,29 @@ function GUI_alert_user_lose() {
 		}
 	}
 	update_stats(false);
+	alert("You lose\n:(");
 }
 function update_stats(win) {
-	localStorage.setItem("play-times",
-		( parseInt(localStorage.getItem("play-times")) || 0 ) + 1
+	localStorage.setItem("play_times",
+		( parseInt(localStorage.getItem("play_times")) || 0 ) + 1
 	);
-	localStorage.setItem("game-nothings",
-		( parseInt(localStorage.getItem("game-nothings")) || 0 ) + game_nothings
+	localStorage.setItem("game_nothings",
+		( parseInt(localStorage.getItem("game_nothings")) || 0 ) + game_nothings
 	);
-	localStorage.setItem("bomb-taps",
-		( parseInt(localStorage.getItem("bomb-taps")) || 0 ) + bomb_taps
+	localStorage.setItem("bomb_taps",
+		( parseInt(localStorage.getItem("bomb_taps")) || 0 ) + bomb_taps
 	);
 	if(win) {
-		localStorage.setItem("win-times",
-			( parseInt(localStorage.getItem("win-times")) || 0 ) + 1
+		localStorage.setItem("win_times",
+			( parseInt(localStorage.getItem("win_times")) || 0 ) + 1
 		);
+		if(navigator.notification) {
+			navigator.notification.vibrate( parseInt(localStorage.getItem("SHORT_VIBRATION")) || DEFAULTS.SHORT_VIBRATION );
+		}
+	} else {
+		if(navigator.notification) {
+			navigator.notification.vibrate( parseInt(localStorage.getItem("LONG_VIBRATION")) || DEFAULTS.LONG_VIBRATION );
+		}
 	}
 }
 

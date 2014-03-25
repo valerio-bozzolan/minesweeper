@@ -32,16 +32,18 @@ $(function() {
 		// Username
 		if(localStorage.getItem("username")) {
 			$("input[name='username']").val( localStorage.getItem("username") );
+		} else {
+			$("input[name='username']").attr("placeholder", DEFAULTS.USERNAME );
 		}
 		$("input[name='username']").change(function() {
 			localStorage.setItem("username", $("input[name='username']").val());
 		});
 
 		// Show stats
-		$(".play-times").text( localStorage.getItem("play-times") || 0 );
-		$(".game-nothings").text( localStorage.getItem("game-nothings") || 0 );
-		$(".bomb-taps") .text( localStorage.getItem("bomb-taps")  || 0 );
-		$(".win-times") .text( localStorage.getItem("win-times")  || 0 );
+		$(".play_times").text( localStorage.getItem("play_times") || 0 );
+		$(".game_nothings").text( localStorage.getItem("game_nothings") || 0 );
+		$(".bomb_taps") .text( localStorage.getItem("bomb_taps")  || 0 );
+		$(".win_times") .text( localStorage.getItem("win_times")  || 0 );
 	});
 
 	// Open links in stock browser
