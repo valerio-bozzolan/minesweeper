@@ -21,7 +21,8 @@ var MINESWEEPER = {
 var DEFAULTS = {
 	USERNAME: "Mr. Bombarolo",
 	SHORT_VIBRATION: 75,
-	LONG_VIBRATION: 500
+	LONG_VIBRATION: 500,
+	LATEST_APK: "http://minesweeper.reyboz.it/downloads/MineSweeper-latest.apk"
 };
 
 /**

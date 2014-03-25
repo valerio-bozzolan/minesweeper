@@ -28,6 +28,24 @@ $(function() {
 		return false;
 	});
 
+	$(document).on("pageshow", "#settings", function() {
+		// Username
+		if(localStorage.getItem("username")) {
+			$("input[name='username']").val( localStorage.getItem("username") );
+		} else {
+			$("input[name='username']").attr("placeholder", DEFAULTS.USERNAME );
+		}
+		$("input[name='username']").change(function() {
+			localStorage.setItem("username", $("input[name='username']").val());
+		});
+
+		// Show stats
+		$(".play_times").text( localStorage.getItem("play_times") || 0 );
+		$(".game_nothings").text( localStorage.getItem("game_nothings") || 0 );
+		$(".bomb_taps") .text( localStorage.getItem("bomb_taps")  || 0 );
+		$(".win_times") .text( localStorage.getItem("win_times")  || 0 );
+	});
+
 	$(document).on("pagebeforeshow", "#settings", function() {
 		// Username
 		if(localStorage.getItem("username")) {
@@ -52,6 +70,8 @@ $(function() {
 		window.open(addressValue, '_system');
 		return false;
 	});
+
+	$(".download-latest").attr("href", DEFAULTS.LATEST_APK );
 
 	GUI_ask_new_game();
 });
