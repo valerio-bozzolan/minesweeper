@@ -67,7 +67,11 @@ $(function() {
 	// Open links in stock browser
 	$("a.my-external").click(function () {
 		var addressValue = $(this).attr("href");
-		window.open(addressValue, '_system');
+		if(navigator.app) {
+			navigator.app.loadUrl(addressValue, { openExternal:true });
+		} else {
+			window.open(addressValue, '_system');
+		}
 		return false;
 	});
 
