@@ -21,9 +21,22 @@ External libraries may have different licenses:
 
 * /media/bip.ogg
 * /media/shoot.ogg
-	Thanks to Alberto Solaro
+	Created by Alberto Solaro
 	http://creativecommons.org/licenses/by/4.0/
 
 * /media/yuppie.ogg
-	Thanks to http://freesound.org/people/Robinhood76/sounds/95535/
+	Choosed by Marco Gagino
+	Originally from http://freesound.org/people/Robinhood76/sounds/95535/
 	http://creativecommons.org/licenses/by-nc/3.0/
+
+* /media/lawn-mower-electric.ogg
+	Originally from http://freesound.org/people/JustinBW/sounds/79287/
+	http://creativecommons.org/licenses/by/3.0/
+
+* /media/kvantisera-loop.ogg
+	Originally from	http://freesound.org/people/Kvantisera/sounds/69503/
+	http://creativecommons.org/licenses/sampling+/1.0/
+
+* /media/game-over-evil.ogg
+	Originally from http://freesound.org/people/Rocotilos/sounds/178876/
+	http://creativecommons.org/publicdomain/zero/1.0/

@@ -29,6 +29,9 @@ var DEFAULTS = {
  * Soundtracks
  */
 var SOUNDS = {
+	INTRO_LOOP: "media/kvantisera-loop.ogg",
+	GAME_OVER: "media/game-over-evil.ogg",
+	START_GAME: "media/lawn-mower-electric.ogg",
 	TAP_NOTHING: "media/bip.ogg",
 	EXPLODE: "media/shoot.ogg",
 	WIN: "media/yuppie.ogg"
@@ -77,8 +80,10 @@ function new_game(bombs, Nx) {
 	create_field_from_Nx(Nx);
 	set_bombs(float2int((game_max_x * game_max_y * bombs) / 100));
 	if(game_bombs >= game_max_x * game_max_y) {
-		return false; // Uhm? More bombs than cells?
+		return false; // Uh? More bombs than cells?
 	}
+	audio.INTRO_LOOP.pause();
+	audio.START_GAME.play();
 	set_flags_counter(0);
 	game_nothings = 0;
 	game_win = false;
@@ -349,6 +354,7 @@ function GUI_alert_user_win() {
 	alert("Wei... Bu.. But...\nYOU WIN! :D");
 }
 function GUI_alert_user_lose() {
+	audio.GAME_OVER.play();
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			if(cells[x][y].is_bomb) {

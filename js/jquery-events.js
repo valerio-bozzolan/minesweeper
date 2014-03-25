@@ -84,5 +84,12 @@ $(function() {
 		audio[jingle].setAttribute('src', SOUNDS[jingle] );
 	}
 
+	// INTRO_LOOP
+	audio.INTRO_LOOP.play();
+	audio.INTRO_LOOP.addEventListener('ended', function() {
+		this.currentTime = 0;
+		this.play();
+	}, false);
+
 	GUI_ask_new_game();
 });
