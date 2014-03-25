@@ -43,6 +43,7 @@ var game_bombs;
 var game_nothings; // No, I'm not a stupid goat: the "s" remember me that this is the plural of "how many cells with type=TYPE.NOTHING", and so that this is not an useless "nothing" var.
 var game_win;
 var first_tap;
+var bomb_taps;
 
 /**
  * Game functions
@@ -62,6 +63,7 @@ function new_game(bombs, Nx) {
 	game_nothings = 0;
 	game_win = false;
 	first_tap = true;
+	bomb_taps = 0;
 	return true;
 }
 /**
@@ -130,7 +132,7 @@ function get_Nx_from_side(side) {
 	return float2int(CSS.content_innerWidth / side);
 }
 function get_Ny_from_side(side) {
-	var less = $("div#header").innerHeight() + $("div#footer").innerHeight(); // BUT PADDING/BORDER/MARGIN???
+	var less = $("div#header").innerHeight();
 	return float2int((window.innerHeight - less) / side);
 }
 function set_bombs(n) {
@@ -223,6 +225,7 @@ function GUI_user_set_bomb(x, y) {
 			} else {
 				reveal_nothing(x, y);
 			}
+			bomb_taps++;
 			break;
 		case TYPE.FLAGGED:
 			console.log("It's flagged. First remove flag!");
@@ -273,7 +276,7 @@ function GUI_set_reset(x, y) {
 	GUI_get_element(x, y).css("background", "grey");
 }
 function GUI_set_nothing(x, y, n) {
-	GUI_get_element(x, y).css("background", "green")/*.attr("disabled", "disabled")*/;
+	GUI_get_element(x, y).css("background", "green");
 	GUI_get_element(x, y).text(
 		((n) ? n : " ")
 	);
@@ -311,13 +314,14 @@ function GUI_alert_user_win() {
 			if(cell.type == TYPE.DEFAULT) {
 				if(cell.is_bomb) {
 					GUI_set_flag(x, y);
-					cells[x][y].type = TYPE.FLAGGED;
 				} else {
 					alert("YET NOTHING CELLS. ALERT THE PROGRAMMER PLEASE WITH A SCREENSHOT!!!!\n(This mean that the programmer it's a bit confused. Alert him. Do it. Please. Please!)");
 				}
 			}	
+			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
+	update_stats(true);
 	alert("Wei... Bu.. But...\nYOU WIN! :D");
 }
 function GUI_alert_user_lose() {
@@ -327,8 +331,25 @@ function GUI_alert_user_lose() {
 			if(cells[x][y].is_bomb) {
 					GUI_set_bomb(x, y);
 			}
-			cells[x][y].type = TYPE.BOMB; // In order to deny clicks
+			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
+	}
+	update_stats(false);
+}
+function update_stats(win) {
+	localStorage.setItem("play-times",
+		( parseInt(localStorage.getItem("play-times")) || 0 ) + 1
+	);
+	localStorage.setItem("game-nothings",
+		( parseInt(localStorage.getItem("game-nothings")) || 0 ) + game_nothings
+	);
+	localStorage.setItem("bomb-taps",
+		( parseInt(localStorage.getItem("bomb-taps")) || 0 ) + bomb_taps
+	);
+	if(win) {
+		localStorage.setItem("win-times",
+			( parseInt(localStorage.getItem("win-times")) || 0 ) + 1
+		);
 	}
 }
 
