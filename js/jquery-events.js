@@ -75,7 +75,14 @@ $(function() {
 		return false;
 	});
 
+	// Download link
 	$(".download-latest").attr("href", DEFAULTS.LATEST_APK );
+
+	// Incorporate all SOUNDS in DOM
+	for(var jingle in SOUNDS) {
+		audio[jingle] = document.createElement('audio');
+		audio[jingle].setAttribute('src', SOUNDS[jingle] );
+	}
 
 	GUI_ask_new_game();
 });

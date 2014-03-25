@@ -16,7 +16,7 @@ var MINESWEEPER = {
 };
 
 /**
- * Default settings if none in localStorage
+ * Default settings
  */
 var DEFAULTS = {
 	USERNAME: "Mr. Bombarolo",
@@ -26,11 +26,21 @@ var DEFAULTS = {
 };
 
 /**
+ * Soundtracks
+ */
+var SOUNDS = {
+	TAP_NOTHING: "media/bip.ogg",
+	EXPLODE: "media/shoot.ogg",
+	WIN: "media/yuppie.ogg"
+}
+
+/**
  * Global jQuery vars
  */
 var field;
 var field_el;
 var field_el_tappable;
+var audio = new Object(); // Automatically generated from `SOUNDS` (E.g. `audio.TAP_NOTHING.play()` )
 
 /**
  * Global constants
@@ -227,12 +237,15 @@ function GUI_user_set_bomb(x, y) {
 	switch(cells[x][y].type) {
 		case TYPE.DEFAULT:
 			if(cells[x][y].is_bomb) {
+				audio.EXPLODE.play();
 				GUI_set_bomb(x, y);
 				cells[x][y].type = TYPE.BOMB;
 				GUI_alert_user_lose();
 			} else if(cells[x][y].n_near_bombs) {
+				audio.TAP_NOTHING.play();
 				set_nothing(x, y, cells[x][y].n_near_bombs);
 			} else {
+				audio.TAP_NOTHING.play();
 				reveal_nothing(x, y);
 			}
 			bomb_taps++;
@@ -318,6 +331,7 @@ function GUI_bind_cell_events() {
 	});
 }
 function GUI_alert_user_win() {
+	audio.WIN.play();
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			var cell = cells[x][y];

@@ -18,3 +18,12 @@ External libraries may have different licenses:
 * /js/minesweeper.js (Only `shuffle` function)
 	Shuffler [rev. #1], by Jonas Raoni Soares Silva
 	http://jsfromhell.com/array/shuffle
+
+* /media/bip.ogg
+* /media/shoot.ogg
+	Thanks to Alberto Solaro
+	http://creativecommons.org/licenses/by/4.0/
+
+* /media/yuppie.ogg
+	Thanks to http://freesound.org/people/Robinhood76/sounds/95535/
+	http://creativecommons.org/licenses/by-nc/3.0/
