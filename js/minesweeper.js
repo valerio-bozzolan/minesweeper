@@ -1,43 +1,30 @@
 /**
- * CSS settings
- */
-var CSS = {
-	side_borders:2/*,
-	content_innerWidth:0, This is automatically added */
-};
-
-/**
- * DOM settings
+ * General settings
  */
 var MINESWEEPER = {
+	SIDE_BORDERS:2,
 	FIELD:"table#field",
 	SINGLE_CELL:"table#field td",
-	SINGLE_CELL_TAPPABLE:"table#field td button"
+	SINGLE_CELL_TAPPABLE:"table#field td button",
+	LATEST_APK: "http://minesweeper.reyboz.it/downloads/MineSweeper-latest.apk"
+	/* CONTENT_INNER_WIDTH:0, This is automatically added */
 };
 
 /**
- * Default settings
+ * Defaults settings for localStorage
  */
 var DEFAULTS = {
-	USERNAME: "Mr. Bombarolo",
-	SHORT_VIBRATION: 75,
-	LONG_VIBRATION: 500,
-	LATEST_APK: "http://minesweeper.reyboz.it/downloads/MineSweeper-latest.apk"
-};
-
-/**
- * Soundtracks
- */
-var SOUNDS = {
-	INTRO_LOOP: {src:"media/kvantisera-loop.ogg"},
-	GAME_OVER: {src:"media/game-over-evil.ogg"},
-	START_GAME: {src:"media/lawn-mower-electric.ogg"},
-	TAP_NOTHING: {src:"media/bip.ogg"},
-	EXPLODE: {src:"media/shoot.ogg"},
-	WIN: {src:"media/yuppie.ogg"}
+	"bomb_taps": 0,
+	"game_nothings": 0,
+	"long_vibration": 200,
+	"sound": true,
+	"vibration": true,
+	"short_vibration": 25,
+	"win_times": 0
+	/*"username": "Mr. Bombarolo", No default*/
 }
 
-/**
+/*
  * Global jQuery vars
  */
 var field;
@@ -45,7 +32,7 @@ var field_el;
 var field_el_tappable;
 
 /**
- * Global "constants"
+ * Cell "constants"
  */
 var TYPE = {
 	DEFAULT:0,
@@ -54,7 +41,7 @@ var TYPE = {
 	BOMB:3,
 };
 
-/**
+/*
  * Global vars
  */
 var cells; // cells[x][y] = {is_bomb: boolean, type: int [, n_near_bombs: int]}
@@ -67,7 +54,7 @@ var game_win;
 var first_tap;
 var bomb_taps;
 
-/**
+/*
  * Game functions
  */
 
@@ -81,13 +68,10 @@ function new_game(bombs, Nx) {
 	if(game_bombs >= game_max_x * game_max_y) {
 		return false; // Uh? More bombs than cells?
 	}
-	// Stop loop song
-	if(sound_loop) {
-		sound_loop.pause(); // see from index.js
-	} else {
-		SOUNDS.INTRO_LOOP.audio.pause(); // see jquery-events.js
-	}
-	singthesong(SOUNDS.START_GAME);
+
+	SOUNDS.INTRO_LOOP.audio.pause(); 
+
+	play_now(SOUNDS.START_GAME);
 	set_flags_counter(0);
 	game_nothings = 0;
 	game_win = false;
@@ -95,17 +79,18 @@ function new_game(bombs, Nx) {
 	bomb_taps = 0;
 	return true;
 }
+
 /**
- * Prevent that first bomb is collocated at `secure_start_x` and `secure_start_y` position.
+ * Prevent that first bomb is collocated in the first tap (otherwise user might get mad)
  */
-function prepare_bombs(secure_start_x, secure_start_y) {
+function prepare_bombs(first_tap_x, first_tap_y) {
 	cells = new Array();
 	var candidates = new Array();
 	for(var x=0; x<game_max_x; x++) {
 		cells[x] = new Array();
 		for(var y=0; y<game_max_y; y++) {
 			cells[x][y] = {is_bomb:false, type:TYPE.DEFAULT}; // Reset game
-			if(!(x == secure_start_x && y == secure_start_y)) {
+			if(!(x == first_tap_x && y == first_tap_y)) {
 				candidates.push( new Array(x, y) );
 			} else {
 				console.log("Not choosen " + x + " " + y);
@@ -158,7 +143,7 @@ function create_field_from_side(side) {
 	GUI_bind_cell_events();
 }
 function get_Nx_from_side(side) {
-	return float2int(CSS.content_innerWidth / side);
+	return float2int(MINESWEEPER.CONTENT_INNER_WIDTH / side);
 }
 function get_Ny_from_side(side) {
 	var less = $("div#header").innerHeight();
@@ -236,7 +221,7 @@ function reveal_nothing(x, y) {
 	}
 }
 
-/**
+/*
  * GUI functions
  */
 function GUI_ask_new_game() {
@@ -246,15 +231,15 @@ function GUI_user_set_bomb(x, y) {
 	switch(cells[x][y].type) {
 		case TYPE.DEFAULT:
 			if(cells[x][y].is_bomb) {
-				singthesong(SOUNDS.EXPLODE);
+				play_now(SOUNDS.EXPLODE);
 				GUI_set_bomb(x, y);
 				cells[x][y].type = TYPE.BOMB;
 				GUI_alert_user_lose();
 			} else if(cells[x][y].n_near_bombs) {
-				singthesong(SOUNDS.TAP_NOTHING);
+				play_now(SOUNDS.TAP_NOTHING);
 				set_nothing(x, y, cells[x][y].n_near_bombs);
 			} else {
-				singthesong(SOUNDS.TAP_NOTHING);
+				play_now(SOUNDS.TAP_NOTHING);
 				reveal_nothing(x, y);
 			}
 			bomb_taps++;
@@ -315,10 +300,10 @@ function GUI_set_nothing(x, y, n) {
 }
 function GUI_set_side(side) {
 	field_el
-		.width(side - CSS.side_borders)
-		.height(side - CSS.side_borders)
-		.css("maxWidth", (side - CSS.side_borders) + "px")
-		.css("maxHeight", (side - CSS.side_borders) + "px");
+		.width(side - MINESWEEPER.SIDE_BORDERS)
+		.height(side - MINESWEEPER.SIDE_BORDERS)
+		.css("maxWidth", (side - MINESWEEPER.SIDE_BORDERS) + "px")
+		.css("maxHeight", (side - MINESWEEPER.SIDE_BORDERS) + "px");
 }
 function GUI_bind_cell_events() {
 	field_el_tappable.on('tap', function() {
@@ -340,7 +325,7 @@ function GUI_bind_cell_events() {
 	});
 }
 function GUI_alert_user_win() {
-	singthesong(SOUNDS.WIN);
+	play_now(SOUNDS.WIN);
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			var cell = cells[x][y];
@@ -358,7 +343,7 @@ function GUI_alert_user_win() {
 	alert("Wei... Bu.. But...\nYOU WIN! :D");
 }
 function GUI_alert_user_lose() {
-	singthesong(SOUNDS.GAME_OVER);
+	play_now(SOUNDS.GAME_OVER);
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			if(cells[x][y].is_bomb) {
@@ -371,37 +356,58 @@ function GUI_alert_user_lose() {
 	alert("You lose\n:(");
 }
 function update_stats(win) {
-	localStorage.setItem("play_times",
-		( parseInt(localStorage.getItem("play_times")) || 0 ) + 1
-	);
-	localStorage.setItem("game_nothings",
-		( parseInt(localStorage.getItem("game_nothings")) || 0 ) + game_nothings
-	);
-	localStorage.setItem("bomb_taps",
-		( parseInt(localStorage.getItem("bomb_taps")) || 0 ) + bomb_taps
-	);
+	set_option("play_times", get_option("play_times", "d") + 1);
+	set_option("game_nothings", get_option("game_nothings", "d") + game_nothings);
+	set_option("bomb_taps", get_option("bomb_taps", "d") + bomb_taps);
 	if(win) {
-		localStorage.setItem("win_times",
-			( parseInt(localStorage.getItem("win_times")) || 0 ) + 1
-		);
-		if(navigator.notification && localStorage.getItem("VIBRATION")) {
-			navigator.notification.vibrate( parseInt(localStorage.getItem("SHORT_VIBRATION")) || DEFAULTS.SHORT_VIBRATION );
-		}
+		set_option("win_times", get_option("win_times", "d") + 1);
+		vibrate_now(get_option("short_vibration", "d"));
 	} else {
-		localStorage.setItem("lose_times",
-			( parseInt(localStorage.getItem("lose_times")) || 0 ) + 1
-		);
-		if(navigator.notification && localStorage.getItem("VIBRATION")) {
-			navigator.notification.vibrate( parseInt(localStorage.getItem("LONG_VIBRATION")) || DEFAULTS.LONG_VIBRATION );
-		}
+		set_option("lose_times", get_option("lose_times", "d") + 1);
+		vibrate_now(get_option("long_vibration", "d"));
 	}
 }
 
-/**
+/*
+ * Smarter localStorage functions (for my comfort)
+ */
+function get_option(name, force_type) {
+	var value = localStorage.getItem(name);
+	if(value === null) {
+		var value = DEFAULTS[name];
+	}
+	if(force_type) {
+		switch(force_type) {
+			case "d": return parseInt(value); // Decimal integer
+			case "f": return parseFloat(value); // Float
+		}
+	}
+	return value;
+}
+function set_option(name, value) {
+	if(typeof value === 'boolean') {
+		value = bool2str(value);
+	}
+	localStorage.setItem(name, value);
+}
+
+/*
+ * Device manipulation
+ */
+function play_now(jingle) {
+	if(get_option("sound")) {
+		jingle.audio.play();
+	}
+}
+function vibrate_now(time) {
+	if(navigator.notification && get_option("vibration")) {
+		navigator.notification.vibrate(time);
+	}
+}
+
+/*
  * Basically functions
  */
-//+ Jonas Raoni Soares Silva
-//@ http://jsfromhell.com/array/shuffle [v1.0]
 function shuffle(o) { //v1.0
 	for(var j, x, i=o.length; i; j=Math.floor(Math.random() * i), x=o[--i], o[i]=o[j], o[j]=x);
 	return o;
@@ -415,21 +421,6 @@ function int2bool(int) {
 function bool2int(bool) {
 	return bool ? 1 : 0;
 }
-
-/**
- * Phone-"gap" related...
- */
-function singthesong(track) {
-	if(navigator.app) {
-		new Media(
-			PATH + track.src,
-			function() {
-			},
-			function(error) {
-				alert("Error with track " + track.src + " error: " + error.code + " " + error.message);
-			}
-		).play(); // App
-	} else {
-		track.audio.play(); // Browser
-	}
+function bool2str(bool) {
+	return bool ? "1" : "";
 }

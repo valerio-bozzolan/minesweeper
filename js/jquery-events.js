@@ -11,7 +11,7 @@ $(function() {
 		$("#page-start-new-game").panel("close");
 	});
 
-	CSS.content_innerWidth = $("div#content").innerWidth() - 32; // 16px + 16px of padding
+	MINESWEEPER.CONTENT_INNER_WIDTH = $("div#content").innerWidth() - 32; // 16px + 16px of padding
 
 	$(".play").click(function( event ) {
 		var bombs = $("#page-start-new-game select[name='bombs']").val();
@@ -32,20 +32,32 @@ $(function() {
 	 * Settings page - One-time update
 	 */
 	$(document).on("pageinit", "#settings", function() {
-		// Username
-		$("input[name='username']").change(function() {
-			localStorage.setItem("username", $("input[name='username']").val());
+		// onChange username
+		$("input[name=username]").change(function() {
+			var el = $(this);
+			set_option(el.attr("name"), el.val());
 		});
 
-		// Vibration
-		$("input[name='vibration']").change(function(){
-			localStorage.setItem("vibration", bool2int($(this).is(':checked')) );
+		// onChange vibration
+		$("input[name=vibration]").change(function() {
+			set_option("vibration", $(this).is(":checked"));
+			vibrate_now(get_option("short_vibration"));
+		});
+
+		// onChange sound
+		$("input[name=sound]").change(function() {
+			set_option("sound", $(this).is(":checked"));
+			if(!$(this).is(":checked")) {
+				SOUNDS.INTRO_LOOP.audio.pause();
+			} else {
+				play_now(SOUNDS.TAP_NOTHING);
+			}	
 		});
 
 		// Force external links in stock browser
 		$("a.my-external").click(function () {
 			var addressValue = $(this).attr("href");
-			if(navigator.app) {
+			if(app.IS_APP) {
 				navigator.app.loadUrl(addressValue, { openExternal:true });
 			} else {
 				window.open(addressValue, '_system');
@@ -54,7 +66,7 @@ $(function() {
 		});
 
 		// Download APK link
-		$(".download-latest").attr("href", DEFAULTS.LATEST_APK );
+		$(".download-latest").attr("href", MINESWEEPER.LATEST_APK );
 	});
 
 	/**
@@ -62,35 +74,43 @@ $(function() {
 	 */
 	$(document).on("pagebeforeshow", "#settings", function() {
 		// Username
-		if(localStorage.getItem("username")) {
-			$("input[name='username']").val( localStorage.getItem("username") );
+		if(get_option("username")) {
+			$("input[name=username]").val( get_option("username") );
 		} else {
-			$("input[name='username']").attr("placeholder", DEFAULTS.USERNAME );
+			$("input[name=username]").attr("placeholder", "Mr. Bombarolo");
 		}
 
 		// Vibration
-		$("input[name='vibration']").attr('checked', int2bool(localStorage.getItem("vibration")) || 1 );
+		$("input[name=vibration]").prop('checked', get_option("vibration") ).checkboxradio("refresh");
+
+		// Sound
+		$("input[name=sound]").prop('checked', get_option("sound") ).checkboxradio("refresh");
 
 		// Stats
-		$(".play_times").text( localStorage.getItem("play_times") || 0 );
-		$(".game_nothings").text( localStorage.getItem("game_nothings") || 0 );
-		$(".bomb_taps") .text( localStorage.getItem("bomb_taps")  || 0 );
-		$(".win_times") .text( localStorage.getItem("win_times")  || 0 );
+		$(".play_times").text( get_option("play_times"));
+		$(".game_nothings").text(get_option("game_nothings"));
+		$(".bomb_taps").text(get_option("bomb_taps"));
+		$(".win_times").text(get_option("win_times"));
 	});
 
 	/**
-	 * Incorporate all SOUNDS in DOM (if browser)
+	 * SOUNDS in DOM if browser
 	 */
-	if(!navigator.app) {
+	if(!app.IS_APP) {
+		// in DOM if browser
 		for(var jingle in SOUNDS) {
 			SOUNDS[jingle].audio = document.createElement('audio');
 			SOUNDS[jingle].audio.setAttribute('src', SOUNDS[jingle].src );
 		}
-		SOUNDS.INTRO_LOOP.audio.play();
-		SOUNDS.INTRO_LOOP.audio.addEventListener('ended', function() {
-			this.currentTime = 0;
-			this.play();
-		}, false);
+
+		// SOUNDS loop
+		if(get_option("sound")) {
+			SOUNDS.INTRO_LOOP.audio.play();
+			SOUNDS.INTRO_LOOP.audio.addEventListener('ended', function() {
+				this.currentTime = 0;
+				this.play();
+			}, false);
+		}
 	}
 
 	GUI_ask_new_game();
