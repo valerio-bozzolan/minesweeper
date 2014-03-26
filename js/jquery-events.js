@@ -28,24 +28,38 @@ $(function() {
 		return false;
 	});
 
-	$(document).on("pageshow", "#settings", function() {
+	/**
+	 * Settings page - One-time update
+	 */
+	$(document).on("pageinit", "#settings", function() {
 		// Username
-		if(localStorage.getItem("username")) {
-			$("input[name='username']").val( localStorage.getItem("username") );
-		} else {
-			$("input[name='username']").attr("placeholder", DEFAULTS.USERNAME );
-		}
 		$("input[name='username']").change(function() {
 			localStorage.setItem("username", $("input[name='username']").val());
 		});
 
-		// Show stats
-		$(".play_times").text( localStorage.getItem("play_times") || 0 );
-		$(".game_nothings").text( localStorage.getItem("game_nothings") || 0 );
-		$(".bomb_taps") .text( localStorage.getItem("bomb_taps")  || 0 );
-		$(".win_times") .text( localStorage.getItem("win_times")  || 0 );
+		// Vibration
+		$("input[name='vibration']").change(function(){
+			localStorage.setItem("vibration", bool2int($(this).is(':checked')) );
+		});
+
+		// Force external links in stock browser
+		$("a.my-external").click(function () {
+			var addressValue = $(this).attr("href");
+			if(navigator.app) {
+				navigator.app.loadUrl(addressValue, { openExternal:true });
+			} else {
+				window.open(addressValue, '_system');
+			}
+			return false;
+		});
+
+		// Download APK link
+		$(".download-latest").attr("href", DEFAULTS.LATEST_APK );
 	});
 
+	/**
+	 * Settings page - All-time updates
+	 */
 	$(document).on("pagebeforeshow", "#settings", function() {
 		// Username
 		if(localStorage.getItem("username")) {
@@ -53,43 +67,31 @@ $(function() {
 		} else {
 			$("input[name='username']").attr("placeholder", DEFAULTS.USERNAME );
 		}
-		$("input[name='username']").change(function() {
-			localStorage.setItem("username", $("input[name='username']").val());
-		});
 
-		// Show stats
+		// Vibration
+		$("input[name='vibration']").attr('checked', int2bool(localStorage.getItem("vibration")) || 1 );
+
+		// Stats
 		$(".play_times").text( localStorage.getItem("play_times") || 0 );
 		$(".game_nothings").text( localStorage.getItem("game_nothings") || 0 );
 		$(".bomb_taps") .text( localStorage.getItem("bomb_taps")  || 0 );
 		$(".win_times") .text( localStorage.getItem("win_times")  || 0 );
 	});
 
-	// Open links in stock browser
-	$("a.my-external").click(function () {
-		var addressValue = $(this).attr("href");
-		if(navigator.app) {
-			navigator.app.loadUrl(addressValue, { openExternal:true });
-		} else {
-			window.open(addressValue, '_system');
+	/**
+	 * Incorporate all SOUNDS in DOM (if browser)
+	 */
+	if(!navigator.app) {
+		for(var jingle in SOUNDS) {
+			SOUNDS[jingle].audio = document.createElement('audio');
+			SOUNDS[jingle].audio.setAttribute('src', SOUNDS[jingle].src );
 		}
-		return false;
-	});
-
-	// Download link
-	$(".download-latest").attr("href", DEFAULTS.LATEST_APK );
-
-	// Incorporate all SOUNDS in DOM
-	for(var jingle in SOUNDS) {
-		audio[jingle] = document.createElement('audio');
-		audio[jingle].setAttribute('src', SOUNDS[jingle] );
+		SOUNDS.INTRO_LOOP.audio.play();
+		SOUNDS.INTRO_LOOP.audio.addEventListener('ended', function() {
+			this.currentTime = 0;
+			this.play();
+		}, false);
 	}
-
-	// INTRO_LOOP
-	audio.INTRO_LOOP.play();
-	audio.INTRO_LOOP.addEventListener('ended', function() {
-		this.currentTime = 0;
-		this.play();
-	}, false);
 
 	GUI_ask_new_game();
 });

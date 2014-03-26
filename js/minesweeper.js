@@ -29,12 +29,12 @@ var DEFAULTS = {
  * Soundtracks
  */
 var SOUNDS = {
-	INTRO_LOOP: "media/kvantisera-loop.ogg",
-	GAME_OVER: "media/game-over-evil.ogg",
-	START_GAME: "media/lawn-mower-electric.ogg",
-	TAP_NOTHING: "media/bip.ogg",
-	EXPLODE: "media/shoot.ogg",
-	WIN: "media/yuppie.ogg"
+	INTRO_LOOP: {src:"media/kvantisera-loop.ogg"},
+	GAME_OVER: {src:"media/game-over-evil.ogg"},
+	START_GAME: {src:"media/lawn-mower-electric.ogg"},
+	TAP_NOTHING: {src:"media/bip.ogg"},
+	EXPLODE: {src:"media/shoot.ogg"},
+	WIN: {src:"media/yuppie.ogg"}
 }
 
 /**
@@ -43,10 +43,9 @@ var SOUNDS = {
 var field;
 var field_el;
 var field_el_tappable;
-var audio = new Object(); // Automatically generated from `SOUNDS` (E.g. `audio.TAP_NOTHING.play()` )
 
 /**
- * Global constants
+ * Global "constants"
  */
 var TYPE = {
 	DEFAULT:0,
@@ -82,8 +81,13 @@ function new_game(bombs, Nx) {
 	if(game_bombs >= game_max_x * game_max_y) {
 		return false; // Uh? More bombs than cells?
 	}
-	audio.INTRO_LOOP.pause();
-	audio.START_GAME.play();
+	// Stop loop song
+	if(sound_loop) {
+		sound_loop.pause(); // see from index.js
+	} else {
+		SOUNDS.INTRO_LOOP.audio.pause(); // see jquery-events.js
+	}
+	singthesong(SOUNDS.START_GAME);
 	set_flags_counter(0);
 	game_nothings = 0;
 	game_win = false;
@@ -242,15 +246,15 @@ function GUI_user_set_bomb(x, y) {
 	switch(cells[x][y].type) {
 		case TYPE.DEFAULT:
 			if(cells[x][y].is_bomb) {
-				audio.EXPLODE.play();
+				singthesong(SOUNDS.EXPLODE);
 				GUI_set_bomb(x, y);
 				cells[x][y].type = TYPE.BOMB;
 				GUI_alert_user_lose();
 			} else if(cells[x][y].n_near_bombs) {
-				audio.TAP_NOTHING.play();
+				singthesong(SOUNDS.TAP_NOTHING);
 				set_nothing(x, y, cells[x][y].n_near_bombs);
 			} else {
-				audio.TAP_NOTHING.play();
+				singthesong(SOUNDS.TAP_NOTHING);
 				reveal_nothing(x, y);
 			}
 			bomb_taps++;
@@ -336,7 +340,7 @@ function GUI_bind_cell_events() {
 	});
 }
 function GUI_alert_user_win() {
-	audio.WIN.play();
+	singthesong(SOUNDS.WIN);
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			var cell = cells[x][y];
@@ -354,7 +358,7 @@ function GUI_alert_user_win() {
 	alert("Wei... Bu.. But...\nYOU WIN! :D");
 }
 function GUI_alert_user_lose() {
-	audio.GAME_OVER.play();
+	singthesong(SOUNDS.GAME_OVER);
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			if(cells[x][y].is_bomb) {
@@ -380,11 +384,14 @@ function update_stats(win) {
 		localStorage.setItem("win_times",
 			( parseInt(localStorage.getItem("win_times")) || 0 ) + 1
 		);
-		if(navigator.notification) {
+		if(navigator.notification && localStorage.getItem("VIBRATION")) {
 			navigator.notification.vibrate( parseInt(localStorage.getItem("SHORT_VIBRATION")) || DEFAULTS.SHORT_VIBRATION );
 		}
 	} else {
-		if(navigator.notification) {
+		localStorage.setItem("lose_times",
+			( parseInt(localStorage.getItem("lose_times")) || 0 ) + 1
+		);
+		if(navigator.notification && localStorage.getItem("VIBRATION")) {
 			navigator.notification.vibrate( parseInt(localStorage.getItem("LONG_VIBRATION")) || DEFAULTS.LONG_VIBRATION );
 		}
 	}
@@ -401,4 +408,28 @@ function shuffle(o) { //v1.0
 }
 function float2int(value) {
 	return value | 0;
+}
+function int2bool(int) {
+	return int ? true : false;
+}
+function bool2int(bool) {
+	return bool ? 1 : 0;
+}
+
+/**
+ * Phone-"gap" related...
+ */
+function singthesong(track) {
+	if(navigator.app) {
+		new Media(
+			PATH + track.src,
+			function() {
+			},
+			function(error) {
+				alert("Error with track " + track.src + " error: " + error.code + " " + error.message);
+			}
+		).play(); // App
+	} else {
+		track.audio.play(); // Browser
+	}
 }
