@@ -32,6 +32,18 @@ $(function() {
 	 * Settings page - One-time update
 	 */
 	$(document).on("pageinit", "#settings", function() {
+
+		// Username
+		if(get_option("username")) {
+			$("input[name=username]").val( get_option("username") );
+		}
+
+		// Vibration
+		$("input[name=vibration]").prop('checked', get_option("vibration") ).checkboxradio("refresh");
+
+		// Sound
+		$("input[name=sound]").prop('checked', get_option("sound") ).checkboxradio("refresh");
+
 		// onChange username
 		$("input[name=username]").change(function() {
 			var el = $(this);
@@ -73,20 +85,8 @@ $(function() {
 	 * Settings page - All-time updates
 	 */
 	$(document).on("pagebeforeshow", "#settings", function() {
-		// Username
-		if(get_option("username")) {
-			$("input[name=username]").val( get_option("username") );
-		} else {
-			$("input[name=username]").attr("placeholder", "Mr. Bombarolo");
-		}
-
-		// Vibration
-		$("input[name=vibration]").prop('checked', get_option("vibration") ).checkboxradio("refresh");
-
-		// Sound
-		$("input[name=sound]").prop('checked', get_option("sound") ).checkboxradio("refresh");
-
 		// Stats
+		console.log("Stats updated");
 		$(".play_times").text( get_option("play_times"));
 		$(".game_nothings").text(get_option("game_nothings"));
 		$(".bomb_taps").text(get_option("bomb_taps"));

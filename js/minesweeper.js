@@ -17,6 +17,7 @@ var DEFAULTS = {
 	"bomb_taps": 0,
 	"game_nothings": 0,
 	"long_vibration": 200,
+	"play_times":0,
 	"sound": true,
 	"vibration": true,
 	"short_vibration": 25,
