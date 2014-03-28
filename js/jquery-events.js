@@ -28,6 +28,11 @@ $(function() {
 		return false;
 	});
 
+	// Swipe RIGHT for the main menu
+	$(document).on("swiperight", function() {
+		GUI_ask_new_game();
+	});
+
 	/**
 	 * Settings page - One-time update
 	 */
