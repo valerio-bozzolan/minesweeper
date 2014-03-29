@@ -11,18 +11,14 @@
 <body>
 <div data-role="page" id="index">
 	<div data-role="header" id="header">
-		<button data-icon="back" data-inline="true" data-mini="true" class="open-new-game-page">New Game</button>
 		<h1>Open MineSweeper</h1>
-		<center>
-			<p>
-			<small>
-				<span class="game-difficult-label">New game</span> | 
-				<span class="flags-counter">0</span> Flags  | 
-				<span class="bombs-counter">0</span> Bombs 
-			</small>
-			</p>
-		</center>
-		<a href="#settings" data-icon="gear" class="ui-btn-right" data-transition="flip">Options</a>
+		<button class="ui-icon-bullets ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all open-new-game-page">New Game</button>
+		<a href="#settings" class="ui-icon-gear ui-btn-inline ui-btn-icon-notext ui-btn ui-shadow ui-corner-all" data-transition="flip"></a>
+		<div class="minesweeper-bar">
+			<span class="game-difficult-label">New</span>
+			<span class="flags-counter">0</span>
+			<span class="bombs-counter">0</span>
+		</div>
 	</div>
 	<div role="main" class="ui-content" id="content">
 		<table id="field"></table>
@@ -48,10 +44,10 @@
 			</select>
 		</p>
 		<p>
-			<button type="button" class="play">PLAY</button>
+			<button type="button" class="ui-btn-active play">PLAY</button>
 		</p>
 		</form>
-		<a href="#popup-help" title="Help" data-rel="popup" class="ui-btn ui-shadow ui-corner-all ui-icon-eye ui-btn-icon-notext ui-btn-inline"></a>
+		<a href="#popup-help" title="Help" data-rel="popup" class="ui-icon-eye ui-btn-inline ui-btn-icon-notext ui-btn ui-shadow ui-corner-all"></a>
 	</div>
 	<div data-role="popup" id="popup-help">
 		<h2>Tip</h2>
@@ -61,44 +57,45 @@
 	</div>
 </div>
 <div data-role="page" id="settings">
-	<div data-role="header" data-add-back-btn="true">
+	<div data-role="header">
 		<h1>Open MineSweeper</h1>
+		<a href="#" title="Back" data-rel="back" class="ui-icon-back ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all">Back</a>
 	</div>
 	<div role="main" class="ui-content">
 		<h2>Settings</h2>
-		<p>
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" placeholder="Mr. Bombarolo" />
-		</p>
-		<p>
-			<label for="sound">Sound</label>
-			<input type="checkbox" name="sound" id="sound" />
-		</p>
-		<p>
-			<label for="vibration">Vibration</label>
-			<input type="checkbox" name="vibration" id="vibration" />
-		</p>
+		<ul data-role="listview" data-inset="true">
+			<li class="ui-field-contain">
+				<label for="username">Username</label>
+				<input type="text" name="username" id="username" placeholder="Mr. Bombarolo" />
+			</li>
+		</ul>
+		<label for="sound">Sound</label>
+		<input type="checkbox" name="sound" id="sound" />
+		<label for="vibration">Vibration</label>
+		<input type="checkbox" name="vibration" id="vibration" />
 		<h2>Stats</h2>
-		<table class="ui-responsive table-stroke">
-		<tbody>
-			<tr>
-				<th>Play times</th>
-				<td><span class="play_times"></span></td>
-			</tr>
-			<tr>
-				<th>Secure zones discovered</th>
-				<td><span class="game_nothings"></span></td>
-			</tr>
-			<tr>
-				<th>Step as MineSweeper</th>
-				<td><span class="bomb_taps"></span></td>
-			</tr>
-			<tr>
-				<th>Win times</th>
-				<td><span class="win_times"></span></td>
-			</tr>
-		</tbody>
-		</table>
+		<div class="ui-bar ui-bar-a ui-corner-all">
+			<table class="ui-responsive table-stroke">
+			<tbody>
+				<tr>
+					<th>Play times</th>
+					<td class="play_times"></td>
+				</tr>
+				<tr>
+					<th>Secure zones discovered</th>
+					<td class="game_nothings"></td>
+				</tr>
+				<tr>
+					<th>Step as MineSweeper</th>
+					<td class="bomb_taps"></td>
+				</tr>
+				<tr>
+					<th>Win times</th>
+					<td class="win_times"></td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
 	</div>
 	<div data-role="footer">
 		<ul>

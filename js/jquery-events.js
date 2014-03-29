@@ -1,4 +1,10 @@
-$(function() {
+// Swipe: A sad story.
+$.event.special.swipe.scrollSupressionThreshold = screen.availWidth / 60; // (default: 10) (pixels) – More than this horizontal displacement, and we will suppress scrolling.
+$.event.special.swipe.horizontalDistanceThreshold = screen.availWidth / 60; // (default: 30) (pixels) – Swipe horizontal displacement must be less than this.
+$.event.special.swipe.verticalDistanceThreshold = screen.availHeight / 13; // (default: 75) (pixels) – Swipe vertical displacement must be less than this.
+$.event.special.swipe.durationThreshold = 1800; // (default: 1000) (milliseconds) – More time than this, and it isn't a swipe.
+
+$(document).ready(function() {
 	$.event.special.tap.emitTapOnTaphold = false;
 
 	field = $(MINESWEEPER.FIELD);
@@ -29,7 +35,7 @@ $(function() {
 	});
 
 	// Swipe RIGHT for the main menu
-	$(document).on("swiperight", function() {
+	$("#index").on("swiperight", function() {
 		GUI_ask_new_game();
 	});
 
@@ -91,7 +97,6 @@ $(function() {
 	 */
 	$(document).on("pagebeforeshow", "#settings", function() {
 		// Stats
-		console.log("Stats updated");
 		$(".play_times").text( get_option("play_times"));
 		$(".game_nothings").text(get_option("game_nothings"));
 		$(".bomb_taps").text(get_option("bomb_taps"));
@@ -118,5 +123,5 @@ $(function() {
 		}
 	}
 
-	GUI_ask_new_game();
+	setTimeout(GUI_ask_new_game , 500);
 });

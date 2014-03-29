@@ -6,7 +6,7 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:14px;
+    font-size:16px;
     height:100%;
     width:100%;
 }
@@ -41,6 +41,19 @@ table#field td button {
 }
 .flag {
 	background:green;
+}
+.minesweeper-bar {
+	font-size:0.7em;
+	text-align:center;
+}
+.minesweeper-bar span {
+	margin:0 0.3em;
+}
+.minesweeper-bar .flags-counter:after {
+	content:" Flags";
+}
+.minesweeper-bar .bombs-counter:after {
+	content:" Bombs";
 }
 
 /* Landscape layout (with min-width) */
