@@ -340,8 +340,8 @@ function GUI_alert_user_win() {
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
-	update_stats(true);
-	alert("Wei... Bu.. But...\nYOU WIN! :D");
+	$("#popup-win").popup("open");
+	update_stats(true); // true -> win
 }
 function GUI_alert_user_lose() {
 	play_now(SOUNDS.GAME_OVER);
@@ -353,8 +353,8 @@ function GUI_alert_user_lose() {
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
-	update_stats(false);
-	alert("You lose\n:(");
+	$("#popup-lose").popup("open");
+	update_stats(false); // false -> lose
 }
 function update_stats(win) {
 	set_option("play_times", get_option("play_times", "d") + 1);
@@ -409,7 +409,7 @@ function vibrate_now(time) {
 /*
  * Basically functions
  */
-function shuffle(o) { //v1.0
+function shuffle(o) {
 	for(var j, x, i=o.length; i; j=Math.floor(Math.random() * i), x=o[--i], o[i]=o[j], o[j]=x);
 	return o;
 }
