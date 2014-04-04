@@ -340,7 +340,7 @@ function GUI_alert_user_win() {
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
-	$("#popup-win").popup("open");
+	$("#popup-win").popup("open", {transition: "flow"});
 	update_stats(true); // true -> win
 }
 function GUI_alert_user_lose() {
@@ -353,7 +353,7 @@ function GUI_alert_user_lose() {
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
-	$("#popup-lose").popup("open");
+	$("#popup-lose").popup("open", {transition: "slideup"});
 	update_stats(false); // false -> lose
 }
 function update_stats(win) {
