@@ -9,6 +9,17 @@ $(document).ready(function() {
 
 	field = $(MINESWEEPER.FIELD);
 
+	var splash = $("#splash");
+	var splash_img = $("#splash img");
+	var ratio = splash_img.width() / splash_img.height();
+	var pratio = splash.parent().innerWidth() / GUI_get_innerHeight();
+	if(ratio<pratio) {
+		splash_img.css({width:'auto', height:(GUI_get_innerHeight() - 50)});
+	} else {
+		splash_img.css({width:'99%', height:'auto'});
+	}
+	console.log(ratio + " " + pratio);
+
 	$(".open-new-game-page").click(function() {
 		$("#page-start-new-game").panel("open");
 	});
@@ -20,6 +31,8 @@ $(document).ready(function() {
 	MINESWEEPER.CONTENT_INNER_WIDTH = $("div#content").innerWidth() - 32; // 16px + 16px of padding
 
 	$(".play").click(function( event ) {
+		splash.hide();
+
 		var bombs = $("#page-start-new-game select[name='bombs']").val();
 		var n_x   = $("#page-start-new-game select[name='n_x']").val();
 		if(!new_game(bombs, n_x)) {
@@ -123,5 +136,5 @@ $(document).ready(function() {
 		}
 	}
 
-	setTimeout(GUI_ask_new_game , 500);
+	setTimeout(GUI_ask_new_game , 1000);
 });
