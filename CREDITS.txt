@@ -1,7 +1,7 @@
 MineSweeper is under the terms of the GNU General Public License v3.
 	https://www.gnu.org/licenses/gpl.txt
 
-External libraries may have different licenses:
+External libraries or files may have different licenses:
 
 *PhoneGap
 *Cordova
@@ -14,6 +14,10 @@ External libraries may have different licenses:
 	jQuery v2.0.2
 	(c) 2005, 2013 jQuery Foundation, Inc.
 	https://jquery.org/license/
+
+* /js/jquery-events.js
+	Part of code for the splash icon originally from Piotr (http://webdev.zalewa.info/) and Oscar (https://twitter.com/oskar)
+	http://jsfiddle.net/LTJ8P/
 
 * /js/minesweeper.js (Only `shuffle` function)
 	Shuffler [rev. #1], by Jonas Raoni Soares Silva
@@ -40,3 +44,9 @@ External libraries may have different licenses:
 * /media/game-over-evil.ogg
 	Originally from http://freesound.org/people/Rocotilos/sounds/178876/
 	http://creativecommons.org/publicdomain/zero/1.0/
+
+* /img/help.png
+* /img/lose.png
+* /img/win.png
+	Created by Marco Gagino
+	http://creativecommons.org/licenses/by-nc/3.0/
