@@ -147,8 +147,7 @@ function get_Nx_from_side(side) {
 	return float2int(MINESWEEPER.CONTENT_INNER_WIDTH / side);
 }
 function get_Ny_from_side(side) {
-	var less = $("div#header").innerHeight();
-	return float2int((window.innerHeight - less) / side);
+	return float2int(GUI_get_innerHeight() / side);
 }
 function set_bombs(n) {
 	game_bombs = n;
@@ -227,6 +226,10 @@ function reveal_nothing(x, y) {
  */
 function GUI_ask_new_game() {
 	$("#page-start-new-game").panel("open");
+}
+function GUI_get_innerHeight() {
+	var less = $("div#header").innerHeight();
+	return window.innerHeight - less;
 }
 function GUI_user_set_bomb(x, y) {
 	switch(cells[x][y].type) {
