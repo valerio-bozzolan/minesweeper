@@ -1,7 +1,13 @@
-MineSweeper is under the terms of the GNU General Public License v3.
+Open MineSweeper is under the terms of the GNU General Public License v3
+-------------------------------------------------------------------------
+	Complete license at:
+	/LICENSE.txt
+
+	Or see online:
 	https://www.gnu.org/licenses/gpl.txt
 
 External libraries or files may have different licenses:
+--------------------------------------------------------
 
 *PhoneGap
 *Cordova

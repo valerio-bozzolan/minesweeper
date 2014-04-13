@@ -1,8 +1,15 @@
-// Swipe: A sad story.
+/*
+ * Swipe: A sad story.
+ */
 $.event.special.swipe.scrollSupressionThreshold = screen.availWidth / 60; // (default: 10) (pixels) – More than this horizontal displacement, and we will suppress scrolling.
 $.event.special.swipe.horizontalDistanceThreshold = screen.availWidth / 60; // (default: 30) (pixels) – Swipe horizontal displacement must be less than this.
 $.event.special.swipe.verticalDistanceThreshold = screen.availHeight / 13; // (default: 75) (pixels) – Swipe vertical displacement must be less than this.
 $.event.special.swipe.durationThreshold = 1800; // (default: 1000) (milliseconds) – More time than this, and it isn't a swipe.
+
+/*
+ * Hold tap
+ */
+$.event.special.tap.tapholdThreshold = 300;
 
 $(document).ready(function() {
 	$.event.special.tap.emitTapOnTaphold = false;
