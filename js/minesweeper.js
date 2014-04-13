@@ -319,6 +319,7 @@ function GUI_bind_cell_events() {
 		}
 		GUI_user_set_bomb(x, y);
 	}).on('taphold', function() {
+		vibrate_now(get_option("short_vibration", "d"));
 		var x = GUI_get_x(this);
 		var y = GUI_get_y(this);
 		if(first_tap) {
