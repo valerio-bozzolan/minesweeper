@@ -52,6 +52,7 @@
 		<a href="#popup-help" title="Help" data-rel="popup" class="ui-icon-eye ui-btn-inline ui-btn-icon-notext ui-btn ui-shadow ui-corner-all"></a>
 	</div>
 	<div data-role="popup" id="popup-help">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 		<center>
 			<img alt="help_image" src="img/help.png" width="329">
 		</center>
@@ -67,12 +68,14 @@
 		</center>
 	</div>
 	<div data-role="popup" id="popup-win">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 		<center>
 			<img alt="win_image" src="img/win.png" width="347">
 			<h2>You win! :D</h2>
 		</center>
 	</div>
 	<div data-role="popup" id="popup-lose">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 		<center>
 			<img alt="lose_image" src="img/lose.png" width="379">
 			<h2>You lose!</h2>
@@ -83,7 +86,7 @@
 <div data-role="page" id="settings">
 	<div data-role="header">
 		<h1>Open MineSweeper</h1>
-		<a href="#" title="Back" data-rel="back" class="ui-icon-back ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all">Back</a>
+		<a href="#" title="Back" data-close-btn="right" class="ui-icon-back ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all">Back</a>
 	</div>
 	<div role="main" class="ui-content">
 		<h2>Settings</h2>
@@ -129,6 +132,7 @@
 		</ul>
 	</div>
 	<div data-role="popup" id="popup-license">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 		<h3>Thank you for using this Free Software</h3>
 		<p>
 			This program is <b>free software</b>: you can <b>redistribute</b> it and/or <b>modify</b>
