@@ -33,7 +33,8 @@ table#field td button {
 	border:0;
 	width:100%;
 	height:100%;
-	background:grey;
+	background:url(../img/blocco.png) no-repeat;
+	background-size: 100% 100%;
 	overflow:hidden;
 }
 .bomb {
