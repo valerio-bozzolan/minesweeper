@@ -31,6 +31,10 @@ External libraries or files may have different licenses:
 
 * /media/bip.ogg
 * /media/shoot.ogg
+* /img/blocco.png
+* /img/bloccodep.png
+* /img/bomb.png
+* /img/flags.png
 	Created by Alberto Solaro
 	http://creativecommons.org/licenses/by/4.0/
 

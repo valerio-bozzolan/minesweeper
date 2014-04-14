@@ -1,10 +1,10 @@
 * {
-	-webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+	-webkit-tap-highlight-color:rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 body {
-	-webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
-	-webkit-text-size-adjust: none;  /* prevent webkit from resizing text to fit */
-	-webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+	-webkit-touch-callout:none; /* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust:none; /* prevent webkit from resizing text to fit */
+	-webkit-user-select:none; /* prevent copy paste, to allow, change 'none' to 'text' */
 	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	font-size:16px;
 	height:100%;
@@ -33,15 +33,23 @@ table#field td button {
 	border:0;
 	width:100%;
 	height:100%;
-	background:url(../img/blocco.png) no-repeat;
-	background-size: 100% 100%;
 	overflow:hidden;
 }
-.bomb {
-	background:red;
+.cell-bomb {
+	background-image:url(../img/bomb.png)
 }
-.flag {
-	background:green;
+.cell-default {
+	
+}
+.cell-nothing {
+	background-image:url(../img/bloccodep.png)
+}
+.cell-bomb, .cell-default, .cell-nothing {
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+.cell-flag {
+	background:yellow;
 }
 .minesweeper-bar {
 	font-size:0.7em;

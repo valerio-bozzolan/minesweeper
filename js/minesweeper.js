@@ -133,7 +133,7 @@ function create_field_from_side(side) {
 	for(var y=0; y<game_max_y; y++) {
 		table += "<tr>";
 		for(var x=0; x<game_max_x; x++) {
-			table += "<td><button> </button></td>";
+			table += "<td><button class='default'> </button></td>";
 		}
 		table += "</tr>";
 	}
@@ -288,16 +288,16 @@ function GUI_set_flags_counter(n) {
 	$(".flags-counter").text(n);
 }
 function GUI_set_flag(x, y) {
-	GUI_get_element(x, y).css("background", "yellow");
+	GUI_get_element(x, y).removeClass().addClass("cell-flag");
 }
 function GUI_set_bomb(x, y) {
-	GUI_get_element(x, y).css('background','url("./img/bomb.png") no-repeat').css({"background-size": "100% 100%", "background-color":"red"});
+	GUI_get_element(x, y).removeClass().addClass("cell-bomb");
 }
 function GUI_set_reset(x, y) {
-	GUI_get_element(x, y).css('background','url("./img/blocco.png") no-repeat').css({"background-size": "100% 100%", "background-color":"light green"});
+	GUI_get_element(x, y).removeClass().addClass("cell-default");
 }
 function GUI_set_nothing(x, y, n) {
-	GUI_get_element(x, y).css('background','url("./img/bloccodep.png") no-repeat').css({"background-size": "100% 100%", "background-color":"light green"});
+	GUI_get_element(x, y).removeClass().addClass("cell-nothing");
 	GUI_get_element(x, y).text(
 		((n) ? n : " ")
 	);
