@@ -291,13 +291,13 @@ function GUI_set_flag(x, y) {
 	GUI_get_element(x, y).css("background", "yellow");
 }
 function GUI_set_bomb(x, y) {
-	GUI_get_element(x, y).css("background", "red");
+	GUI_get_element(x, y).css('background','url("./img/bomb.png") no-repeat').css({"background-size": "100% 100%", "background-color":"red"});
 }
 function GUI_set_reset(x, y) {
-	GUI_get_element(x, y).css("background", "grey");
+	GUI_get_element(x, y).css('background','url("./img/blocco.png") no-repeat').css({"background-size": "100% 100%", "background-color":"light green"});
 }
 function GUI_set_nothing(x, y, n) {
-	GUI_get_element(x, y).css("background", "green");
+	GUI_get_element(x, y).css('background','url("./img/bloccodep.png") no-repeat').css({"background-size": "100% 100%", "background-color":"light green"});
 	GUI_get_element(x, y).text(
 		((n) ? n : " ")
 	);
