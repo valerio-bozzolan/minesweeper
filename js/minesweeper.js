@@ -5,7 +5,7 @@ var MINESWEEPER = {
 	SIDE_BORDERS:2,
 	FIELD:"table#field",
 	SINGLE_CELL:"table#field td",
-	SINGLE_CELL_TAPPABLE:"table#field td button",
+	SINGLE_CELL_TAPPABLE:"table#field td",
 	LATEST_APK: "http://minesweeper.reyboz.it/downloads/MineSweeper-latest.apk"
 	/* CONTENT_INNER_WIDTH:0, This is automatically added */
 };
@@ -133,7 +133,7 @@ function create_field_from_side(side) {
 	for(var y=0; y<game_max_y; y++) {
 		table += "<tr>";
 		for(var x=0; x<game_max_x; x++) {
-			table += "<td><button class='default'> </button></td>";
+			table += "<td class='cell-default'></td>";
 		}
 		table += "</tr>";
 	}
@@ -254,6 +254,7 @@ function GUI_user_set_bomb(x, y) {
 	}
 }
 function GUI_user_set_flag(x, y) {
+	console.log("Set flag" + x + " " + y);
 	switch(cells[x][y].type) {
 		case TYPE.DEFAULT:
 			cells[x][y].type = TYPE.FLAGGED;
@@ -268,15 +269,15 @@ function GUI_user_set_flag(x, y) {
 	}
 }
 function GUI_get_x(element) {
-	var s = $(element).parent();
+	var s = $(element);
 	return $(s).parent().children().index($(s));
 }
 function GUI_get_y(element) {
-	var s = $(element).parent();
+	var s = $(element);
 	return $(s).parent().parent().children().index($(s).parent());
 }
 function GUI_get_element(x, y) {
-	return $("table#field tr").eq(y).find("td button").eq(x);
+	return $("table#field tr").eq(y).find("td").eq(x);
 }
 function GUI_clear_table() {
 	field.empty();

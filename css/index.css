@@ -26,23 +26,17 @@ table#field td {
 	padding:0;
 	border:1px solid #000;
 	overflow: hidden;
-}
-table#field td button {
-	margin:0;
-	padding:0;
-	border:0;
-	width:100%;
-	height:100%;
-	overflow:hidden;
+	text-align:center;
+	color:#000;
 }
 .cell-bomb {
-	background-image:url(../img/bomb.png)
+	background-image:url(../img/bomb.png);
 }
 .cell-default {
-	
+	background-image:url(../img/blocco.png);
 }
 .cell-nothing {
-	background-image:url(../img/bloccodep.png)
+	background-image:url(../img/bloccodep.png);
 }
 .cell-bomb, .cell-default, .cell-nothing {
 	background-repeat:no-repeat;
@@ -68,7 +62,8 @@ table#field td button {
 	text-align:center;
 }
 
-/* Landscape layout (with min-width) */
+/* Landscape layout (with min-width) 
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
 
 }
+*/
