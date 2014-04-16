@@ -5,6 +5,7 @@ $.event.special.swipe.scrollSupressionThreshold = screen.availWidth / 60; // (de
 $.event.special.swipe.horizontalDistanceThreshold = screen.availWidth / 60; // (default: 30) (pixels) – Swipe horizontal displacement must be less than this.
 $.event.special.swipe.verticalDistanceThreshold = screen.availHeight / 13; // (default: 75) (pixels) – Swipe vertical displacement must be less than this.
 $.event.special.swipe.durationThreshold = 1800; // (default: 1000) (milliseconds) – More time than this, and it isn't a swipe.
+$.event.special.tap.emitTapOnTaphold = false;
 
 /*
  * Hold tap
@@ -16,20 +17,13 @@ $(window).resize(function() {
 });
 
 $(document).ready(function() {
-	$.event.special.tap.emitTapOnTaphold = false;
-
 	field = $(MINESWEEPER.FIELD);
-
 	var splash = $("#splash");
-	var splash_img = $("#splash img");
-	var ratio = splash_img.width() / splash_img.height();
-	var pratio = splash.parent().innerWidth() / GUI_get_innerHeight();
-	if(ratio<pratio) {
-		splash_img.css({width:'auto', height:(GUI_get_innerHeight() - 50)});
-	} else {
-		splash_img.css({width:'99%', height:'auto'});
-	}
-	console.log(ratio + " " + pratio);
+
+	img_shrink("#splash img", splash.parent().innerWidth(), GUI_get_innerHeight(), 0.95);
+	$(".img-shrink").each(function() {
+		img_shrink(this, $("body").innerWidth(), $("body").innerHeight(), 0.7);
+	});
 
 	$(".open-new-game-page").click(function() {
 		$("#page-start-new-game").panel("open");

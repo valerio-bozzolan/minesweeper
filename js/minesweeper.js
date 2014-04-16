@@ -166,7 +166,11 @@ function is_bomb(x, y) {
 	return have_sense(x, y) && cells[x][y].is_bomb;
 }
 function get_cell_round(x, y) {
-	return [[x-1, y-1], [x-1, y  ], [x-1, y+1], [x  , y-1], [x+1, y-1], [x+1, y  ], [x+1, y+1], [x  , y+1]];
+	var x1 = x-1;
+	var x2 = x+1;
+	var y1 = y-1;
+	var y2 = y+1;
+	return [[x1, y1], [x1, y], [x1, y2], [x, y1], [x2, y1], [x2, y], [x2, y2], [x, y2]];
 }
 function get_n_near_bombs(x, y) {
 	var n = 0;
@@ -184,7 +188,6 @@ function set_nothing(x, y, n) {
 	}
 	cells[x][y].type = TYPE.NOTHING;
 	GUI_set_nothing(x, y, n);
-	console.log(game_max_x * game_max_y - game_bombs + " <= " + game_nothings);
 	if(game_max_x * game_max_y - game_bombs <= game_nothings) { // Better "==", but I do not trust my coder mind
 		GUI_alert_user_win();
 	}
@@ -416,4 +419,24 @@ function bool2int(bool) {
 }
 function bool2str(bool) {
 	return bool ? "1" : "";
+}
+
+/**
+ * Force an image to preserve its ratio width/height maximizing it into a certain
+ * space and shrinking it with a dimensional rate.
+ * The image will not be stretched.
+ */
+function img_shrink(img, into_width, into_height, dim_rate) { // dim_rate <= 1
+	var img = $(img);
+	var img_width = img.width();
+	var img_height = img.height();
+	var ratio = img_width / img_height;
+	var pratio = into_width / into_height;
+	if(ratio<pratio) {
+		if(img_height > into_height) {
+			img.css({width:'auto', height:into_height*dim_rate});
+		}
+	} else if(img_width > into_width) {
+		img.css({width:into_width*dim_rate, height:'auto'});
+	}
 }
