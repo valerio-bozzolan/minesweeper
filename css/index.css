@@ -19,15 +19,13 @@ table#field {
 	border-collapse:collapse;
 	width:100%;
 	height:100%;
-	background:black;
 }
 table#field td {
 	margin:0;
 	padding:0;
-	border:1px solid #000;
+	border:0;
 	overflow: hidden;
 	text-align:center;
-	color:#000;
 }
 #splash {
 	text-align:center;

@@ -11,6 +11,10 @@ $.event.special.swipe.durationThreshold = 1800; // (default: 1000) (milliseconds
  */
 $.event.special.tap.tapholdThreshold = 300;
 
+$(window).resize(function() {
+	MINESWEEPER.CONTENT_INNER_WIDTH = $("div#content").innerWidth() - 32; // 16px + 16px of padding
+});
+
 $(document).ready(function() {
 	$.event.special.tap.emitTapOnTaphold = false;
 
