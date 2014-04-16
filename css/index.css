@@ -29,6 +29,13 @@ table#field td {
 	text-align:center;
 	color:#000;
 }
+#splash {
+	text-align:center;
+}
+
+/*
+ * Cells
+ */
 .cell-bomb {
 	background-image:url(../img/bomb.png);
 }
@@ -38,13 +45,17 @@ table#field td {
 .cell-nothing {
 	background-image:url(../img/bloccodep.png);
 }
+.cell-flag {
+	background:yellow;
+}
 .cell-bomb, .cell-default, .cell-nothing {
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
-.cell-flag {
-	background:yellow;
-}
+
+/*
+ * Info bar (under title)
+ */
 .minesweeper-bar {
 	font-size:0.7em;
 	text-align:center;
@@ -57,9 +68,6 @@ table#field td {
 }
 .minesweeper-bar .bombs-counter:after {
 	content:" Bombs";
-}
-#splash {
-	text-align:center;
 }
 
 /* Landscape layout (with min-width) 

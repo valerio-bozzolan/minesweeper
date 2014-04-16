@@ -93,8 +93,6 @@ function prepare_bombs(first_tap_x, first_tap_y) {
 			cells[x][y] = {is_bomb:false, type:TYPE.DEFAULT}; // Reset game
 			if(!(x == first_tap_x && y == first_tap_y)) {
 				candidates.push( new Array(x, y) );
-			} else {
-				console.log("Not choosen " + x + " " + y);
 			}
 		}
 	}
@@ -109,15 +107,13 @@ function prepare_bombs(first_tap_x, first_tap_y) {
 		cells[ candidates[i][0] ][ candidates[i][1] ].is_bomb = true; // Element elected as bomb
 	}
 
-	/*
-	 * This will win the "Lazy Trick" second prize to facilitate the function `reveal_nothing(x, y)`.
-	 * But it (obviously) works properly<del> and it makes this piece of code sooooo clean..</del>.
-	 * So if you want to fight about it, write on your own your better code and don't be stressful.
-	 */
-	for(var x=0; x<game_max_x; x++) {
-		for(var y=0; y<game_max_y; y++) {
-			if(!cells[x][y].is_bomb) {
-				cells[x][y].n_near_bombs = get_n_near_bombs(x, y);
+	for(var i=0; i<game_bombs; i++) {
+		var cell_round = get_cell_round(candidates[i][0], candidates[i][1]);
+		for(var j=0; j<8; j++) {
+			var x = cell_round[j][0];
+			var y = cell_round[j][1]
+			if(have_sense(x, y) && !cells[x][y].is_bomb) {
+				cells[x][y].n_near_bombs = get_n_near_bombs(cell_round[j][0], cell_round[j][1]);
 			}
 		}
 	}
@@ -170,16 +166,17 @@ function is_bomb(x, y) {
 	return have_sense(x, y) && cells[x][y].is_bomb;
 }
 function get_cell_round(x, y) {
-	return [
-		[x-1, y-1], // Up left
-		[x-1, y  ], // Left
-		[x-1, y+1], // Down left
-		[x  , y-1], // Up
-		[x+1, y-1], // Up right
-		[x+1, y  ], // Right
-		[x+1, y+1], // Down right
-		[x  , y+1]  // Down
-	];
+	return [[x-1, y-1], [x-1, y  ], [x-1, y+1], [x  , y-1], [x+1, y-1], [x+1, y  ], [x+1, y+1], [x  , y+1]];
+}
+function get_n_near_bombs(x, y) {
+	var n = 0;
+	var cell_round = get_cell_round(x, y);
+	for(var i=0; i<8; i++) {
+		if(is_bomb(cell_round[i][0], cell_round[i][1])) {
+			n++;
+		}
+	}
+	return n;
 }
 function set_nothing(x, y, n) {
 	if(cells[x][y].type != TYPE.NOTHING) {
@@ -191,16 +188,6 @@ function set_nothing(x, y, n) {
 	if(game_max_x * game_max_y - game_bombs <= game_nothings) { // Better "==", but I do not trust my coder mind
 		GUI_alert_user_win();
 	}
-}
-function get_n_near_bombs(x, y) {
-	var n = 0;
-	var cell_round = get_cell_round(x, y);
-	for(var i=0; i<8; i++) {
-		if(is_bomb(cell_round[i][0], cell_round[i][1])) {
-			n++;
-		}
-	}
-	return n;
 }
 function reveal_nothing(x, y) {
 	set_nothing(x, y, cells[x][y].n_near_bombs);
