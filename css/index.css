@@ -26,6 +26,7 @@ table#field td {
 	border:0;
 	overflow: hidden;
 	text-align:center;
+	text-shadow:none;
 }
 #splash {
 	text-align:center;
