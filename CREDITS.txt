@@ -35,6 +35,7 @@ External libraries or files may have different licenses:
 * /img/bloccodep.png
 * /img/bomb.png
 * /img/flags.png
+* /img/flag.png
 	Created by Alberto Solaro
 	http://creativecommons.org/licenses/by/4.0/
 
