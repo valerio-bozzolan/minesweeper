@@ -386,6 +386,7 @@ function set_option(name, value) {
 	}
 	localStorage.setItem(name, value);
 }
+function pippo() {}
 
 /*
  * Device manipulation

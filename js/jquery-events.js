@@ -37,7 +37,8 @@ $(document).ready(function() {
 
 	$(".play").click(function( event ) {
 		splash.hide();
-
+		$("#popup-lose").popup("close");
+		$("#popup-win").popup("close");
 		var bombs = $("#page-start-new-game select[name='bombs']").val();
 		var n_x   = $("#page-start-new-game select[name='n_x']").val();
 		if(!new_game(bombs, n_x)) {
@@ -50,6 +51,7 @@ $(document).ready(function() {
 			$("#page-start-new-game").panel("close");
 		}
 		return false;
+		
 	});
 
 	// Swipe RIGHT for the main menu
