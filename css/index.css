@@ -69,6 +69,9 @@ table#field td {
 .minesweeper-bar .bombs-counter:after {
 	content:" Bombs";
 }
+#popup-lose button {
+	text-transform:uppercase;
+}
 
 /* Landscape layout (with min-width) 
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
