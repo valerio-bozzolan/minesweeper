@@ -31,7 +31,6 @@ var DEFAULTS = {
  */
 var field;
 var field_el;
-var field_el_tappable;
 
 /**
  * Cell "constants"
@@ -56,6 +55,7 @@ var game_win;
 var first_tap;
 var bomb_taps;
 var prevent_exit = true;
+var pre_Nx = 0; // To see if settings changed
 
 /*
  * Game functions
@@ -65,8 +65,14 @@ var prevent_exit = true;
  * Reset the game
  */
 function new_game(bombs, Nx) {
-	GUI_clear_table();
-	create_field_from_Nx(Nx);
+	if(pre_Nx != Nx) {
+		GUI_clear_table();
+		create_field_from_Nx(Nx);
+		pre_Nx = Nx;
+	} else {
+		field_el.removeClass().addClass("cell-default").empty();
+	}
+
 	set_bombs(float2int((game_max_x * game_max_y * bombs) / 100));
 	if(game_bombs >= game_max_x * game_max_y) {
 		return false; // Uh? More bombs than cells?
@@ -137,7 +143,6 @@ function create_field_from_side(side) {
 	}
 	field.html(table);
 	field_el = $(MINESWEEPER.SINGLE_CELL);
-	field_el_tappable = $(MINESWEEPER.SINGLE_CELL_TAPPABLE);
 	GUI_set_side(side);
 	GUI_bind_cell_events();
 }
@@ -303,7 +308,7 @@ function GUI_set_side(side) {
 		.css("maxHeight", (side - MINESWEEPER.SIDE_BORDERS) + "px");
 }
 function GUI_bind_cell_events() {
-	field_el_tappable.on('tap', function() {
+	field_el.on('tap', function() {
 		var x = GUI_get_x(this);
 		var y = GUI_get_y(this);
 		if(first_tap) {
@@ -371,7 +376,7 @@ function GUI_prevent_exit() {
 	} else {
 		if(navigator.app){
 			navigator.app.exitApp();
-		}else if(navigator.device){
+		} else if(navigator.device){
 			navigator.device.exitApp();
 		}
 	}
