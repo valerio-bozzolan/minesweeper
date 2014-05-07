@@ -41,6 +41,7 @@ var app = {
 	bindEvents: function() {
 		document.addEventListener("deviceready", this.onDeviceReady, false);
 		document.addEventListener("pause", this.onDevicePause, false);
+		document.addEventListener("backbutton", this.onBackKeyDown, false);
 	},
 	// deviceready Event Handler
 	//
@@ -75,5 +76,9 @@ var app = {
 	},
 	onDevicePause: function() {
 		SOUNDS.INTRO_LOOP.audio.pause(); // Would you be so kind to KILL IMMEDIATELY THIS FU***NG JINGLE WHEN I WANT TO STOP IT!?!? o__o'
+	},
+	onBackKeyDown: function() {
+		GUI_prevent_exit();
+		return false;
 	}
 };

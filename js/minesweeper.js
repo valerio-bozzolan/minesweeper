@@ -2,6 +2,7 @@
  * General settings
  */
 var MINESWEEPER = {
+	PREVENT_EXIT_TIMEOUT:500,
 	SIDE_BORDERS:2,
 	FIELD:"table#field",
 	SINGLE_CELL:"table#field td",
@@ -54,6 +55,7 @@ var game_nothings; // No, I'm not a stupid goat: the "s" remember me that this i
 var game_win;
 var first_tap;
 var bomb_taps;
+var prevent_exit = true;
 
 /*
  * Game functions
@@ -350,6 +352,29 @@ function GUI_alert_user_lose() {
 	}
 	$("#popup-lose").popup("open", {transition: "slideup"});
 	update_stats(false); // false -> lose
+}
+
+/**
+ * Return true if it prevent closing the app
+ */
+function GUI_prevent_exit() {
+	if(prevent_exit) {
+		prevent_exit = false;
+		$("#popup-alertclose").popup("open");
+		setTimeout(
+			function(){
+				prevent_exit = true;
+				$("#popup-alertclose").popup("close");
+			},
+			MINESWEEPER.PREVENT_EXIT_TIMEOUT
+		);	
+	} else {
+		if(navigator.app){
+			navigator.app.exitApp();
+		}else if(navigator.device){
+			navigator.device.exitApp();
+		}
+	}
 }
 function update_stats(win) {
 	set_option("play_times", get_option("play_times", "d") + 1);
