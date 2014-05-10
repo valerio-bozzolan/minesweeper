@@ -25,14 +25,14 @@ var SOUNDS = {
 var app = {
 	PATH: null,
 	IS_APP: false,
+	initialize: function() {
+		app.PATH = this.getPhoneGapPath();
+		this.bindEvents();
+	},
 	getPhoneGapPath: function() {
 		var path = window.location.pathname;
 		path = path.substr(path, path.length - 10);
 		return 'file://' + path;
-	},
-	initialize: function() {
-		app.PATH = this.getPhoneGapPath();
-		this.bindEvents();
 	},
 	// Bind Event Listeners
 	//

@@ -132,14 +132,15 @@ function create_field_from_Nx(Nx) {
 }
 function create_field_from_side(side) {
 	var table = "";
+	var row = "<tr>";
 	game_max_x = get_Nx_from_side(side);
 	game_max_y = get_Ny_from_side(side);
+	for(var x=0; x<game_max_x; x++) {
+		row += "<td class='cell-default'></td>";
+	}
+	row += "</tr>";
 	for(var y=0; y<game_max_y; y++) {
-		table += "<tr>";
-		for(var x=0; x<game_max_x; x++) {
-			table += "<td class='cell-default'></td>";
-		}
-		table += "</tr>";
+		table += row;
 	}
 	field.html(table);
 	field_el = $(MINESWEEPER.SINGLE_CELL);
