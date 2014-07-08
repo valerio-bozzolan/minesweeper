@@ -59,5 +59,9 @@ External libraries or files may have different licenses:
 * /img/help.png
 * /img/lose.png
 * /img/win.png
+* /img/background_startup.png
+	Some originally from:
+		* http://openclipart.org/detail/168613/nuclear-explosion-by-kg
+		* http://openclipart.org/detail/33331/boomm-by-cybergedeon
 	Created by Marco Gagino
 	http://creativecommons.org/licenses/by-nc/3.0/

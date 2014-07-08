@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<link rel="stylesheet" type="text/css" href="jquery.mobile/jquery.mobile-1.4.2.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="icon" type="image/png" href="img/logo.png" />
+	<title>MineSweeper</title>
+</head>
+<body>
+<div data-role="page" id="index">
+	<div data-role="header" id="header">
+		<h1>Open MineSweeper</h1>
+		<button class="ui-icon-bullets ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all open-new-game-page">New</button>
+		<a href="#settings" class="ui-icon-gear ui-btn-inline ui-btn-icon-notext ui-btn ui-shadow ui-corner-all" data-transition="fade"></a>
+		<div class="minesweeper-bar">
+			<span class="game-difficult-label">New</span>
+			<span class="flags-counter">0</span>
+			<span class="bombs-counter">0</span>
+		</div>
+	</div>
+	<div role="main" class="ui-content" id="content">
+		<table id="field"></table>
+		<div id="splash"><img src='img/background-startup.png' /></div>
+	</div>
+	<div data-role="panel" id="page-start-new-game">
+		<form>
+		<p>
+			<label for="n_x">Field size</label>
+			<select id="n_x" name="n_x">
+				<option value="8">Big finger</option>
+				<option value="12">Normal</option>
+				<option value="15">Difficult</option>
+				<option value="20">Surgeon</option>
+			</select>
+		</p>
+		<p>
+			<label for="bombs">Bombs density</label>
+			<select id="bombs" name="bombs">
+				<option value="10">Normal</option>
+				<option value="15">Medium</option>
+				<option value="20">High</option>
+				<option value="50">Very-high</option>
+			</select>
+		</p>
+		<p>
+			<button type="button" class="ui-btn-active play">PLAY</button>
+		</p>
+		</form>
+		<a href="#popup-help" title="Help" data-rel="popup" class="ui-icon-eye ui-btn-inline ui-btn-icon-notext ui-btn ui-shadow ui-corner-all"></a>
+	</div>
+	<div data-role="popup" id="popup-help">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<center>
+			<img alt="help_image" src="img/help.png" class="img-shrink" />
+		</center>
+		<h2>Tips</h2>
+		<ul>
+			<li><b>Select</b> the size and the bombs density of the field you want to play in and tap <b style="background-color:#3388cc;color:#fff">PLAY</b> to start the game</li>
+			<li><b>Tap</b> on a cell to uncover <b style="background-color:#0f0">hints</b></li>
+			<li>Tap and <b>Hold</b> the cell you think there is a bomb into to place a <b style="background-color:yellow">flag</b> on it!</li>
+			<li>Uncover all the hint-cells to win the game!</li>
+		</ul>
+		<center>
+			<h3>Good Luck!</h3>
+		</center>
+	</div>
+	<div data-role="popup" id="popup-win">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<center>
+			<h2>You win! :D</h2>
+			<img alt="win_image" src="img/win.png" class="img-shrink" />
+			<p><button class="ui-btn-active play">Restart?</button></p>
+		</center>
+	</div>
+	<div data-role="popup" id="popup-lose">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<center>
+			<h2>You lose!</h2>
+			<img alt="lose_image" src="img/lose.png" class="img-shrink" />
+			<p><button class="ui-btn-active play">Restart!</button></p>
+		</center>
+	</div>
+	<div data-role="popup" id="popup-alertclose">
+		<p>Press again to exit.</p>
+	</div>
+</div>
+<div data-role="page" id="settings">
+	<div data-role="header">
+		<h1>Open MineSweeper</h1>
+		<a href="#index" title="Back" class="ui-icon-back ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all">Back</a>
+	</div>
+	<div role="main" class="ui-content">
+		<h2>Settings</h2>
+		<ul data-role="listview" data-inset="true">
+			<li class="ui-field-contain">
+				<label for="username">Username</label>
+				<input type="text" name="username" id="username" placeholder="Mr. Bombarolo" />
+			</li>
+		</ul>
+		<label for="sound">Sound</label>
+		<input type="checkbox" name="sound" id="sound" />
+		<label for="vibration">Vibration</label>
+		<input type="checkbox" name="vibration" id="vibration" />
+		<h2>Stats</h2>
+		<div class="ui-bar ui-bar-a ui-corner-all">
+			<table class="ui-responsive table-stroke">
+			<tbody>
+				<tr>
+					<th>Play times</th>
+					<td class="play_times"></td>
+				</tr>
+				<tr>
+					<th>Secure zones discovered</th>
+					<td class="game_nothings"></td>
+				</tr>
+				<tr>
+					<th>Step as MineSweeper</th>
+					<td class="bomb_taps"></td>
+				</tr>
+				<tr>
+					<th>Win times</th>
+					<td class="win_times"></td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+	<div data-role="footer">
+		<ul>
+			<li>Feel free to improve this app from the <a href="https://launchpad.net/minesweeper" class="my-external">project home</a></li>
+			<li>Feel free to communicate with the <a href="http://contatti.reyboz.it" title="Valerio Bozzolan" class="my-external">founder</a> (Valerio Bozzolan)</li>
+			<li>Feel free to use this piece of <a href="#popup-license" data-rel="popup" data-transition="slide">Free and Open Source software</a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="popup-license">
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<h3>Thank you for using this Free Software</h3>
+		<p>
+			This program is <b>free software</b>: you can <b>redistribute</b> it and/or <b>modify</b>
+			it under the terms of the GNU General Public License as published by
+			the Free Software Foundation, either version 3 of the License, or
+			(at your option) any later version.<br />
+
+			This program is distributed in the hope that it will be useful,
+			but <b>WITHOUT ANY WARRANTY</b>; without even the implied warranty of
+			MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+			GNU General Public License for more details.<br />
+
+			You should have received a copy of the GNU General Public License
+			along with this program. If not, see <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License v3.0" class="my-external">the entire license</a>.
+		</p>
+		<p>
+			<a href="this-is-overrided.apk" data-icon="arrow-d" data-role="button" class="my-external download-latest">Download latest APK</a>
+		</p>
+	</div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+	app.initialize();
+</script>
+<script type="text/javascript" src="jquery/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/minesweeper.js"></script>
+<script type="text/javascript" src="js/jquery-events.js"></script>
+</body>
+</html>
