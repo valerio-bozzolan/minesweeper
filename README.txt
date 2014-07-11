@@ -1,7 +1,4 @@
-Before building with cordova (`cordova build`) edit properly the config.xml file
-to change the version according to the Bazaar revision number.
-
-Check the Bazaar revision number with `bzr revno`.
+Before building with cordova (`cordova build <platform>`) edit properly the config.xml.
 
 For questions:
 	https://answers.launchpad.net/minesweeper
