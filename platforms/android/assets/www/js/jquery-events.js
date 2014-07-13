@@ -124,9 +124,6 @@ $(document).ready(function() {
 			}
 			return false;
 		});
-
-		// Download APK link
-		$(".download-latest").attr("href", MINESWEEPER.LATEST_APK );
 	});
 
 	/**

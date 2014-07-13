@@ -24,8 +24,7 @@ var MINESWEEPER = {
 	SIDE_BORDERS:2,
 	FIELD:"table#field",
 	SINGLE_CELL:"table#field td",
-	SINGLE_CELL_TAPPABLE:"table#field td",
-	LATEST_APK: "http://minesweeper.reyboz.it/downloads/MineSweeper-latest.apk"
+	SINGLE_CELL_TAPPABLE:"table#field td"
 	/* CONTENT_INNER_WIDTH:0, This is automatically added */
 };
 

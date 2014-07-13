@@ -16,51 +16,57 @@ External libraries or files may have different licenses:
 	http://cordova.apache.org
 	http://www.apache.org/licenses/LICENSE-2.0
 
-* /jquery/*
-* /jquery.mobile/*
+* /www/jquery/*
+* /www/jquery.mobile/*
 	jQuery v2.0.2
 	(c) 2005, 2013 jQuery Foundation, Inc.
 	https://jquery.org/license/
 
-* /js/jquery-events.js
+* /www/js/jquery-events.js
 	Part of code for the splash icon originally from Piotr (http://webdev.zalewa.info/) and Oscar (https://twitter.com/oskar)
 	http://jsfiddle.net/LTJ8P/
 
-* /js/minesweeper.js (Only `shuffle` function)
+* /www/js/minesweeper.js (Only `shuffle` function)
 	Shuffler [rev. #1], by Jonas Raoni Soares Silva
 	http://jsfromhell.com/array/shuffle
 
-* /media/bip.ogg
-* /media/shoot.ogg
-* /img/blocco.png
-* /img/bloccodep.png
-* /img/bomb.png
-* /img/flags.png
-* /img/flag.png
+* /www/html10n.js
+	A client-side internationalization / localization library
+	Thanks to marcelklehr & fabi1cazenave for their work
+	BSD/MIT/WTFPL license
+	https://github.com/fabi1cazenave/webL10n
+
+* /www/media/bip.ogg
+* /www/media/shoot.ogg
+* /www/img/blocco.png
+* /www/img/bloccodep.png
+* /www/img/bomb.png
+* /www/img/flags.png
+* /www/img/flag.png
 	Created by Alberto Solaro
 	http://creativecommons.org/licenses/by/4.0/
 
-* /media/yuppie.ogg
+* /www/media/yuppie.ogg
 	Choosed by Marco Gagino
 	Originally from http://freesound.org/people/Robinhood76/sounds/95535/
 	http://creativecommons.org/licenses/by-nc/3.0/
 
-* /media/lawn-mower-electric.ogg
+* /www/media/lawn-mower-electric.ogg
 	Originally from http://freesound.org/people/JustinBW/sounds/79287/
 	http://creativecommons.org/licenses/by/3.0/
 
-* /media/kvantisera-loop.ogg
+* /www/media/kvantisera-loop.ogg
 	Originally from	http://freesound.org/people/Kvantisera/sounds/69503/
 	http://creativecommons.org/licenses/sampling+/1.0/
 
-* /media/game-over-evil.ogg
+* /www/media/game-over-evil.ogg
 	Originally from http://freesound.org/people/Rocotilos/sounds/178876/
 	http://creativecommons.org/publicdomain/zero/1.0/
 
-* /img/help.png
-* /img/lose.png
-* /img/win.png
-* /img/background_startup.png
+* /www/img/help.png
+* /www/img/lose.png
+* /www/img/win.png
+* /www/img/background_startup.png
 	Some originally from:
 		* http://openclipart.org/detail/168613/nuclear-explosion-by-kg
 		* http://openclipart.org/detail/33331/boomm-by-cybergedeon

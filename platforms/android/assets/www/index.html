@@ -24,6 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="jquery.mobile/jquery.mobile-1.4.2.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="icon" type="image/png" href="img/logo.png" />
+	<link rel="localizations" type="application/l10n+json" href="html10n.js/i10n.json" />
 	<title>MineSweeper</title>
 </head>
 <body>
@@ -52,6 +53,7 @@
 		</div>
 	</div>
 	<div role="main" class="ui-content" id="content">
+		<button data-l10n-id="test" title="click me!">This is a test</button>
 		<table id="field"></table>
 		<div id="splash"><img src='img/background-startup.png' /></div>
 	</div>
@@ -194,5 +196,12 @@
 <script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/minesweeper.js"></script>
 <script type="text/javascript" src="js/jquery-events.js"></script>
+<script type="text/javascript" src="html10n.js/l10n.js"></script>
+<script>
+html10n.localize('fr');
+html10n.on('localized', function() {
+  console.log('Localized!')
+});
+</script>
 </body>
 </html>

@@ -2,3 +2,6 @@ Before building with cordova (`cordova build <platform>`) edit properly the conf
 
 For questions:
 	https://answers.launchpad.net/minesweeper
+
+For bug submission:
+	https://bugs.launchpad.net/minesweeper

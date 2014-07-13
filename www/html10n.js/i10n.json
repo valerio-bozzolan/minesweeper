@@ -1,0 +1,14 @@
+{
+"en": {
+  "test": "This is a teeeeeeeeeeeeeeeeeeest",
+  "test.title": "click meeeeeeeeeeeee!"
+},
+"fr": {
+  "test": "Ceci est un teeeeeeeeeeeest",
+  "test.title": "cliquez-meeeeoi!"
+},
+"it": {
+  "test": "ITALIANO TEST",
+  "test.title": "ITELIANO TEST TITLE"
+}
+}
