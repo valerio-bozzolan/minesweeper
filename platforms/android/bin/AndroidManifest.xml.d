@@ -1,2 +1,2 @@
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/AndroidManifest.xml : \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/AndroidManifest.xml \
+/tmp/minesweeper/platforms/android/bin/AndroidManifest.xml : \
+/tmp/minesweeper/platforms/android/AndroidManifest.xml \
