@@ -60,7 +60,7 @@ $(document).ready(function() {
 		var bombs = $("#page-start-new-game select[name='bombs']").val();
 		var n_x   = $("#page-start-new-game select[name='n_x']").val();
 		if(!new_game(bombs, n_x)) {
-			alert("Please decrease bombs.");
+			alert(_("error-bombs"));
 		} else {
 			$(".game-difficult-label").text(
 				$("#page-start-new-game select[name='n_x'] option:selected").text() + " in " +

@@ -44,10 +44,10 @@
 <div data-role="page" id="index">
 	<div data-role="header" id="header">
 		<h1>Open MineSweeper</h1>
-		<button class="ui-icon-bullets ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all open-new-game-page">New</button>
+		<button class="ui-icon-bullets ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all open-new-game-page" data-l10n-id="new">New</button>
 		<a href="#settings" class="ui-icon-gear ui-btn-inline ui-btn-icon-notext ui-btn ui-shadow ui-corner-all" data-transition="fade"></a>
 		<div class="minesweeper-bar">
-			<span class="game-difficult-label">New</span>
+			<span class="game-difficult-label" data-l10n-id="new">New</span>
 			<span class="flags-counter">0</span>
 			<span class="bombs-counter">0</span>
 		</div>
@@ -59,100 +59,100 @@
 	<div data-role="panel" id="page-start-new-game">
 		<form>
 		<p>
-			<label for="n_x">Field size</label>
+			<label for="n_x" data-l10n-id="size">Field size</label>
 			<select id="n_x" name="n_x">
-				<option value="8">Big finger</option>
-				<option value="12">Normal</option>
-				<option value="15">Difficult</option>
-				<option value="20">Surgeon</option>
+				<option value="8" data-l10n-id="size-easy">Big finger</option>
+				<option value="12" data-l10n-id="size-normal">Normal</option>
+				<option value="15" data-l10n-id="size-difficult">Difficult</option>
+				<option value="20" data-l10n-id="size-verydifficult">Surgeon</option>
 			</select>
 		</p>
 		<p>
-			<label for="bombs">Bombs density</label>
+			<label for="bombs" data-l10n-id="density">Bombs density</label>
 			<select id="bombs" name="bombs">
-				<option value="10">Normal</option>
-				<option value="15">Medium</option>
-				<option value="20">High</option>
-				<option value="50">Very-high</option>
+				<option value="10" data-l10n-id="density-normal">Normal</option>
+				<option value="15" data-l10n-id="density-medium">Medium</option>
+				<option value="20" data-l10n-id="density-difficult">High</option>
+				<option value="50" data-l10n-id="density-verydifficult">Very-high</option>
 			</select>
 		</p>
 		<p>
-			<button type="button" class="ui-btn-active play">PLAY</button>
+			<button type="button" class="ui-btn-active play" data-l10n-id="play-button">PLAY</button>
 		</p>
 		</form>
 		<a href="#popup-help" title="Help" data-rel="popup" class="ui-icon-eye ui-btn-inline ui-btn-icon-notext ui-btn ui-shadow ui-corner-all"></a>
 	</div>
 	<div data-role="popup" id="popup-help">
-		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-l10n-id="close-button">Close</a>
 		<center>
 			<img alt="help_image" src="img/help.png" class="img-shrink" />
 		</center>
-		<h2>Tips</h2>
+		<h2 data-l10n-id="tips">Tips</h2>
 		<ul>
-			<li><b>Select</b> the size and the bombs density of the field you want to play in and tap <b style="background-color:#3388cc;color:#fff">PLAY</b> to start the game</li>
-			<li><b>Tap</b> on a cell to uncover <b style="background-color:#0f0">hints</b></li>
-			<li>Tap and <b>Hold</b> the cell you think there is a bomb into to place a <b style="background-color:yellow">flag</b> on it!</li>
+			<li><b>Select</b> the size and the bombs density of the field you want to play in and tap <b class="play">PLAY</b> to start the game</li>
+			<li><b>Tap</b> on a cell to uncover <b class="hints">hints</b></li>
+			<li>Tap and <b>Hold</b> the cell you think there is a bomb into to place a <b class="flag">flag</b> on it!</li>
 			<li>Uncover all the hint-cells to win the game!</li>
 		</ul>
 		<center>
-			<h3>Good Luck!</h3>
+			<h3 data-l10n-id="good-luck">Good Luck!</h3>
 		</center>
 	</div>
 	<div data-role="popup" id="popup-win">
-		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-l10n-id="close-button">Close</a>
 		<center>
-			<h2>You win! :D</h2>
+			<h2 data-l10n-id="you-win">You win! :D</h2>
 			<img alt="win_image" src="img/win.png" class="img-shrink" />
-			<p><button class="ui-btn-active play">Restart?</button></p>
+			<p><button class="ui-btn-active play" data-l10n-id="replay-button">Replay?</button></p>
 		</center>
 	</div>
 	<div data-role="popup" id="popup-lose">
-		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-l10n-id="close-button">Close</a>
 		<center>
-			<h2>You lose!</h2>
+			<h2 data-l10n-id="you-lose">You lose!</h2>
 			<img alt="lose_image" src="img/lose.png" class="img-shrink" />
-			<p><button class="ui-btn-active play">Restart!</button></p>
+			<p><button class="ui-btn-active play" data-l10n-id="replay-button">Restart!</button></p>
 		</center>
 	</div>
 	<div data-role="popup" id="popup-alertclose">
-		<p>Press again to exit.</p>
+		<p data-l10n-id="press-again">Press again to exit.</p>
 	</div>
 </div>
 <div data-role="page" id="settings">
 	<div data-role="header">
 		<h1>Open MineSweeper</h1>
-		<a href="#index" title="Back" class="ui-icon-back ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all">Back</a>
+		<a href="#index" title="Back" class="ui-icon-back ui-btn-inline ui-btn ui-btn-icon-left ui-shadow ui-corner-all" data-l10n-id="back-button">Back</a>
 	</div>
 	<div role="main" class="ui-content">
-		<h2>Settings</h2>
+		<h2 data-l10n-id="settings">Settings</h2>
 		<ul data-role="listview" data-inset="true">
 			<li class="ui-field-contain">
-				<label for="username">Username</label>
+				<label for="username" data-l10n-id="username">Username</label>
 				<input type="text" name="username" id="username" placeholder="Mr. Bombarolo" />
 			</li>
 		</ul>
-		<label for="sound">Sound</label>
+		<label for="sound" data-l10n-id="sound">Sound</label>
 		<input type="checkbox" name="sound" id="sound" />
-		<label for="vibration">Vibration</label>
+		<label for="vibration" data-l10n-id="vibration">Vibration</label>
 		<input type="checkbox" name="vibration" id="vibration" />
-		<h2>Stats</h2>
+		<h2 data-l10n-id="stats">Stats</h2>
 		<div class="ui-bar ui-bar-a ui-corner-all">
 			<table class="ui-responsive table-stroke">
 			<tbody>
 				<tr>
-					<th>Play times</th>
+					<th data-l10n-id="play-times">Play times</th>
 					<td class="play_times"></td>
 				</tr>
 				<tr>
-					<th>Secure zones discovered</th>
+					<th data-l10n-id="secure-zones">Secure zones discovered</th>
 					<td class="game_nothings"></td>
 				</tr>
 				<tr>
-					<th>Step as MineSweeper</th>
+					<th data-l10n-id="step-as-minesweeper">Step as MineSweeper</th>
 					<td class="bomb_taps"></td>
 				</tr>
 				<tr>
-					<th>Win times</th>
+					<th data-l10n-id="win-times">Win times</th>
 					<td class="win_times"></td>
 				</tr>
 			</tbody>
@@ -161,15 +161,16 @@
 	</div>
 	<div data-role="footer">
 		<ul>
-			<li>Feel free to improve the source code from the <a href="https://launchpad.net/minesweeper" class="my-external">lp:minesweeper</a>
-			<li>Feel free to submit bugs or ideas in the <a href="https://bugs.launchpad.net/minesweeper" class="my-external">iussue tracker</a></li>
-			<li>Feel free to communicate with the <a href="http://contatti.reyboz.it" title="Valerio Bozzolan" class="my-external">founder</a> (Valerio Bozzolan)</li>
-			<li>Feel free to love this <a href="#popup-license" data-rel="popup" data-transition="slide">Free and Open Source software</a></li>
+			<li><span data-l10n-id="feel-free-improve">Feel free to improve the source code from the</span> <a href="https://launchpad.net/minesweeper" class="my-external">lp:minesweeper</a></li>
+			<li><span data-l10n-id="feel-free-bugs">Feel free to submit bugs or ideas in the</span> <a href="https://bugs.launchpad.net/minesweeper" class="my-external" data-l10n-id="iussue-tracker">iussue tracker</a></li>
+			<li><span data-l10n-id="feel-free-communicate">Feel free to communicate with the</span> <a href="http://contatti.reyboz.it" title="Valerio Bozzolan" class="my-external" data-l10n-id="founder">founder</a> (Valerio Bozzolan)</li>
+			<li><span data-l10n-id="feel-free-love">Feel free to love this</span> <a href="#popup-license" data-rel="popup" data-transition="slide" data-l10n-id="foss">Free and Open Source software</a></li>
 		</ul>
 	</div>
 	<div data-role="popup" id="popup-license">
-		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-		<h3>Thank you for using this Free Software</h3>
+		<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-l10n-id="close-button">Close</a>
+		<h3 data-l10n-id="thank-you-for-using">Thank you for using this Free Software</h3>
+		<p>Disclaimer:</p>
 		<p>
 			This program is <b>free software</b>: you can <b>redistribute</b> it and/or <b>modify</b>
 			it under the terms of the GNU General Public License as published by
@@ -187,20 +188,14 @@
 	</div>
 </div>
 <script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="html10n.js/l10n.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
-	app.initialize();
+app.initialize();
 </script>
 <script type="text/javascript" src="jquery/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/minesweeper.js"></script>
 <script type="text/javascript" src="js/jquery-events.js"></script>
-<script type="text/javascript" src="html10n.js/l10n.js"></script>
-<script>
-html10n.localize('fr');
-html10n.on('localized', function() {
-  console.log('Localized!')
-});
-</script>
 </body>
 </html>

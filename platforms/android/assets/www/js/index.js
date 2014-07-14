@@ -66,9 +66,22 @@ var app = {
 	// The scope of 'this' is the event. In order to call the 'receivedEvent'
 	// function, we must explicity call 'app.receivedEvent(...);'
 	onDeviceReady: function() {
-		window.html10n.localize(navigator.language.split("-")[0]); // Translating app
-
 		app.IS_APP = true;
+
+		// Localizing
+		html10n.bind("localized", function() {
+			$(document).ready(function() {
+				$("select").selectmenu("refresh"); // Workaround for jQuery Mobile selects
+			});
+		});
+		html10n.localize(navigator.language.split("-")[0]); // Translating app
+
+		window.addEventListener('localized', function() {
+			alert(2);
+			$(document).ready(function() {
+				$("select").selectmenu("refresh");
+			});
+		}, false);
 
 		// SOUNDS with Media if app
 		for(var jingle in SOUNDS) {

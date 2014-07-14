@@ -297,11 +297,11 @@ function GUI_get_element(x, y) {
 function GUI_clear_table() {
 	field.empty();
 }
-function GUI_set_bombs_counter(n) {
-	$(".bombs-counter").text(n);
+function GUI_set_bombs_counter(num) {
+	$(".bombs-counter").text(_("bomb", {n:num}));
 }
-function GUI_set_flags_counter(n) {
-	$(".flags-counter").text(n);
+function GUI_set_flags_counter(num) {
+	$(".flags-counter").text(_("flag", {n:num}));
 }
 function GUI_set_flag(x, y) {
 	GUI_get_element(x, y).removeClass().addClass("cell-flag");

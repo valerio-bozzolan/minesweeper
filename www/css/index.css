@@ -80,17 +80,21 @@ table#field td {
 .minesweeper-bar span {
 	margin:0 0.3em;
 }
-.minesweeper-bar .flags-counter:after {
-	content:" Flags";
-}
-.minesweeper-bar .bombs-counter:after {
-	content:" Bombs";
-}
 #popup-lose button {
 	text-transform:uppercase;
 }
 #preload {
 	display:none;
+}
+.hints {
+	background-color:#0f0;
+}
+.flag {
+	background-color:#ff0;
+}
+.play {
+	background-color:#38c;
+	color:#fff;
 }
 
 /* Landscape layout (with min-width) 
