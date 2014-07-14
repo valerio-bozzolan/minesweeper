@@ -35,6 +35,13 @@ $(window).resize(function() {
 });
 
 $(document).ready(function() {
+
+	// jQuery mobile workaround for Localization
+	html10n.bind("localized", function() {
+		console.log("Localized in " + html10n.language);
+		$("select").selectmenu("refresh");
+	});
+
 	field = $(MINESWEEPER.FIELD);
 	var splash = $("#splash");
 
@@ -52,6 +59,9 @@ $(document).ready(function() {
 	});
 
 	MINESWEEPER.CONTENT_INNER_WIDTH = $("div#content").innerWidth() - 32; // 16px + 16px of padding
+
+	// Automatically ask for new game
+	setTimeout(GUI_ask_new_game , 1000);
 
 	$(".play").click(function( event ) {
 		splash.hide();
@@ -76,9 +86,11 @@ $(document).ready(function() {
 		GUI_ask_new_game();
 	});
 
-	/**
-	 * Settings page - One-time update
+	/*
+	 * Settings page
 	 */
+
+	// One-time update
 	$(document).on("pageinit", "#settings", function() {
 
 		// Username
@@ -126,22 +138,33 @@ $(document).ready(function() {
 		});
 	});
 
-	/**
-	 * Settings page - All-time updates
-	 */
+	// All-time updates
 	$(document).on("pagebeforeshow", "#settings", function() {
-		// Stats
 		$(".play_times").text( get_option("play_times"));
 		$(".game_nothings").text(get_option("game_nothings"));
 		$(".bomb_taps").text(get_option("bomb_taps"));
 		$(".win_times").text(get_option("win_times"));
 	});
 
-	/**
-	 * SOUNDS in DOM if browser
+	// onChange Language
+	$("select#language").change(function() {
+		var lang = $(this).find(":selected").val();
+		if(lang == "default") {
+			lang = (app.is_APP) ? navigator.language.split("-")[0] : (navigator.language || navigator.userLanguage).split("-")[0];
+		}
+		html10n.localize(lang);
+		set_option("language", lang);
+	});
+
+	/*
+	 * If browser
 	 */
+
 	if(!app.IS_APP) {
-		// in DOM if browser
+		// Localization
+		html10n.localize(get_option("language"));
+
+		// SOUNDS in DOM if browser
 		for(var jingle in SOUNDS) {
 			SOUNDS[jingle].audio = document.createElement('audio');
 			SOUNDS[jingle].audio.setAttribute('src', SOUNDS[jingle].src );
@@ -156,6 +179,4 @@ $(document).ready(function() {
 			}, false);
 		}
 	}
-
-	setTimeout(GUI_ask_new_game , 1000);
 });

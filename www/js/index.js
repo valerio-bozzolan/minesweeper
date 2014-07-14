@@ -68,20 +68,8 @@ var app = {
 	onDeviceReady: function() {
 		app.IS_APP = true;
 
-		// Localizing
-		html10n.bind("localized", function() {
-			$(document).ready(function() {
-				$("select").selectmenu("refresh"); // Workaround for jQuery Mobile selects
-			});
-		});
-		html10n.localize(navigator.language.split("-")[0]); // Translating app
-
-		window.addEventListener('localized', function() {
-			alert(2);
-			$(document).ready(function() {
-				$("select").selectmenu("refresh");
-			});
-		}, false);
+		// Localization
+		html10n.localize(get_option("language") || navigator.language.split("-")[0]);
 
 		// SOUNDS with Media if app
 		for(var jingle in SOUNDS) {

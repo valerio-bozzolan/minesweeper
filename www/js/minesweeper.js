@@ -269,7 +269,6 @@ function GUI_user_set_bomb(x, y) {
 	}
 }
 function GUI_user_set_flag(x, y) {
-	console.log("Set flag" + x + " " + y);
 	switch(cells[x][y].type) {
 		case TYPE.DEFAULT:
 			cells[x][y].type = TYPE.FLAGGED;

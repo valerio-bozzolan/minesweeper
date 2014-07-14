@@ -29,7 +29,7 @@
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/media/shoot.ogg \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/media/bip.ogg \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/media/lawn-mower-electric.ogg \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/html10n.js/i10n.json \
+/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/html10n.js/i18n.json \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/html10n.js/l10n.js \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/flag.png \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/win.png \

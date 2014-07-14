@@ -24,22 +24,20 @@
 	<link rel="stylesheet" type="text/css" href="jquery.mobile/jquery.mobile-1.4.2.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="icon" type="image/png" href="img/logo.png" />
-	<link rel="localizations" type="application/l10n+json" href="html10n.js/i10n.json" />
+	<link rel="localizations" type="application/l10n+json" href="html10n.js/i18n.json" />
 	<title>MineSweeper</title>
 </head>
 <body>
 <div id="preload">
-	<img src="img/background-startup.png" width="1" height="1" alt="" />
-	<img src="img/blocco.png" width="1" height="1" alt="" />
-	<img src="img/bloccodep.png" width="1" height="1" alt="" />
-	<img src="img/bomb.png" width="1" height="1" alt="" />
-	<img src="img/flag.png" width="1" height="1" alt="" />
-	<img src="img/flags.png" width="1" height="1" alt="" />
-	<img src="img/help.png" width="1" height="1" alt="" />
-	<img src="img/logo.png" width="1" height="1" alt="" />
-	<img src="img/logo-32.png" width="1" height="1" alt="" />
-	<img src="img/lose.png" width="1" height="1" alt="" />
-	<img src="img/win.png" width="1" height="1" alt="" />
+	<img src="img/background-startup.png" alt="" />
+	<img src="img/blocco.png" alt="" />
+	<img src="img/bloccodep.png" alt="" />
+	<img src="img/bomb.png" alt="" />
+	<img src="img/flag.png" alt="" />
+	<img src="img/flags.png" alt="" />
+	<img src="img/help.png" alt="" />
+	<img src="img/lose.png" alt="" />
+	<img src="img/win.png" alt="" />
 </div>
 <div data-role="page" id="index">
 	<div data-role="header" id="header">
@@ -135,6 +133,17 @@
 		<input type="checkbox" name="sound" id="sound" />
 		<label for="vibration" data-l10n-id="vibration">Vibration</label>
 		<input type="checkbox" name="vibration" id="vibration" />
+		<ul data-role="listview" data-inset="true">
+			<li class="ui-field-contain">
+				<label for="language" data-l10n-id="language">Language</label>
+				<select id="language" name="language">
+					<option value="default" data-l10n-id="default">Default</option>
+					<option value="en">English</option>
+					<option value="it">Italiano</option>
+					<option value="zh">中国的</option>
+				</select>
+			</li>
+		</ul>
 		<h2 data-l10n-id="stats">Stats</h2>
 		<div class="ui-bar ui-bar-a ui-corner-all">
 			<table class="ui-responsive table-stroke">
@@ -189,13 +198,13 @@
 </div>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="html10n.js/l10n.js"></script>
+<script type="text/javascript" src="jquery/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/minesweeper.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
 app.initialize();
 </script>
-<script type="text/javascript" src="jquery/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.2.min.js"></script>
-<script type="text/javascript" src="js/minesweeper.js"></script>
 <script type="text/javascript" src="js/jquery-events.js"></script>
 </body>
 </html>
