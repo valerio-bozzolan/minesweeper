@@ -1,56 +1,56 @@
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes.dex : \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$xml.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$string.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/BuildConfig.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/MineSweeper.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$attr.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$drawable.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioHandler.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer$STATE.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer$1.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer$MODE.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/FileHelper.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$12.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/InvalidModificationException.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$16.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$23.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$6.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$15.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem$LimitedInputStream.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileExistsException.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$24.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/DirectoryManager.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem$ReadFileCallback.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$22.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/ContentFilesystem.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$7.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/EncodingException.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/TypeMismatchException.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$21.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$18.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$20.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$3.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$4.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$FileOp.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$17.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$19.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$2.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$10.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$13.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$11.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$5.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$8.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/NoModificationAllowedException.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/LocalFilesystem.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$9.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$14.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$1.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileHelper.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem$1.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/LocalFilesystemURL.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/classes/org/apache/cordova/vibration/Vibration.class \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/bin/dexedLibs/classes-45ba83828e7ae495466069072bf2fd08.jar \
+/tmp/minesweeper/platforms/android/bin/classes.dex : \
+/tmp/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/MineSweeper.class \
+/tmp/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$attr.class \
+/tmp/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R.class \
+/tmp/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$xml.class \
+/tmp/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/BuildConfig.class \
+/tmp/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$drawable.class \
+/tmp/minesweeper/platforms/android/bin/classes/it/reyboz/minesweeper/R$string.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$5.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$17.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$21.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$11.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$20.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$9.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$24.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$15.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/InvalidModificationException.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$4.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$6.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$3.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem$LimitedInputStream.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/LocalFilesystem.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/NoModificationAllowedException.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$FileOp.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$12.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/DirectoryManager.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$14.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileHelper.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileExistsException.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/EncodingException.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$2.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$7.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$18.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$1.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem$ReadFileCallback.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$22.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$16.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem$1.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/LocalFilesystemURL.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$19.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$10.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$23.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/TypeMismatchException.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/Filesystem.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/ContentFilesystem.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$8.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/file/FileUtils$13.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/vibration/Vibration.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer$STATE.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer$1.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/FileHelper.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioHandler.class \
+/tmp/minesweeper/platforms/android/bin/classes/org/apache/cordova/media/AudioPlayer$MODE.class \
+/tmp/minesweeper/platforms/android/bin/dexedLibs/classes-21bf10d858d08839fb38c7ab22eba261.jar \
