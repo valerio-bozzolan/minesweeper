@@ -29,6 +29,18 @@ var MINESWEEPER = {
 };
 
 /**
+ * Soundtracks
+ */
+var SOUNDS = {
+	INTRO_LOOP: {src:"media/kvantisera-loop.ogg", loop: true},
+	GAME_OVER: {src:"media/game-over-evil.ogg"},
+	START_GAME: {src:"media/lawn-mower-electric.ogg"},
+	TAP_NOTHING: {src:"media/bip.ogg"},
+	EXPLODE: {src:"media/shoot.ogg"},
+	WIN: {src:"media/yuppie.ogg"}	
+}
+
+/**
  * Defaults settings for localStorage
  */
 var DEFAULTS = {

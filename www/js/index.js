@@ -28,18 +28,6 @@
  *                 ||     ||
  */
 
-/**
- * Soundtracks
- */
-var SOUNDS = {
-	INTRO_LOOP: {src:"media/kvantisera-loop.ogg", loop: true},
-	GAME_OVER: {src:"media/game-over-evil.ogg"},
-	START_GAME: {src:"media/lawn-mower-electric.ogg"},
-	TAP_NOTHING: {src:"media/bip.ogg"},
-	EXPLODE: {src:"media/shoot.ogg"},
-	WIN: {src:"media/yuppie.ogg"}	
-}
-
 var app = {
 	PATH: null,
 	IS_APP: false,
@@ -68,9 +56,6 @@ var app = {
 	onDeviceReady: function() {
 		app.IS_APP = true;
 
-		// Localization
-		html10n.localize(get_option("language") || navigator.language.split("-")[0]);
-
 		// SOUNDS with Media if app
 		for(var jingle in SOUNDS) {
 			if(typeof SOUNDS[jingle].loop == 'undefined') {
@@ -94,6 +79,9 @@ var app = {
 		}
 
 		// SOUNDS in DOM if browser (see jquery-events.js)
+
+		// Localization
+		html10n.localize( get_option("language") || navigator.language.split("-")[0] );
 	},
 	onDevicePause: function() {
 		SOUNDS.INTRO_LOOP.audio.pause(); // Would you be so kind to KILL IMMEDIATELY THIS FU***NG JINGLE WHEN I WANT TO STOP IT!?!? o__o'
