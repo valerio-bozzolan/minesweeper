@@ -32,9 +32,9 @@ External libraries or files may have different licenses:
 
 * /www/html10n.js
 	A client-side internationalization / localization library
-	Thanks to marcelklehr & fabi1cazenave for their work
+	Thanks to marcelklehr (& fabi1cazenave) for their work
 	BSD/MIT/WTFPL license
-	https://github.com/fabi1cazenave/webL10n
+	https://github.com/marcelklehr/html10n.js
 
 * /www/media/bip.ogg
 * /www/media/shoot.ogg
