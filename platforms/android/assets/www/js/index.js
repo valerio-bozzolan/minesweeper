@@ -16,18 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- *  _____________________________________
- * / MineSweeper: 100% pure meat GNU GPL \
- * \ Will you be able not to love me?    /
- *  -------------------------------------
- *         \   ^__^
- *          \  (..)\_______
- *             (__)\       )\/\
- *                 ||----w |
- *                 ||     ||
- */
-
 var app = {
 	PATH: null,
 	IS_APP: false,
