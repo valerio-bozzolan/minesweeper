@@ -39,7 +39,7 @@ $(document).ready(function() {
 	// jQuery mobile workaround for Localization
 	html10n.bind("localized", function() {
 		console.log("Localized in " + html10n.language);
-		$("select").selectmenu("refresh");
+		$("select").selectmenu("refresh", true);
 	});
 
 	field = $(MINESWEEPER.FIELD);
@@ -104,6 +104,9 @@ $(document).ready(function() {
 		// Sound
 		$("input[name=sound]").prop('checked', get_option("sound") ).checkboxradio("refresh");
 
+		// Localization
+		$("select#language").val( get_option("language") ).selectmenu( "refresh", true );
+
 		// onChange username
 		$("input[name=username]").change(function() {
 			var el = $(this);
@@ -148,12 +151,10 @@ $(document).ready(function() {
 
 	// onChange Language
 	$("select#language").change(function() {
-		var lang = $(this).find(":selected").val();
-		if(lang == "default") {
-			lang = (app.is_APP) ? navigator.language.split("-")[0] : (navigator.language || navigator.userLanguage).split("-")[0];
-		}
-		html10n.localize(lang);
-		set_option("language", lang);
+		set_option("language", $(this).find(":selected").val());
+		$(this).selectmenu("refresh", true );
+		console.log("Changed to " + get_option("language"));
+		do_localization();
 	});
 
 	/*

@@ -66,10 +66,8 @@ var app = {
 			SOUNDS.INTRO_LOOP.audio.play();
 		}
 
-		// SOUNDS in DOM if browser (see jquery-events.js)
-
 		// Localization
-		html10n.localize( get_option("language") || navigator.language.split("-")[0] );
+		do_localization();
 	},
 	onDevicePause: function() {
 		SOUNDS.INTRO_LOOP.audio.pause(); // Would you be so kind to KILL IMMEDIATELY THIS FU***NG JINGLE WHEN I WANT TO STOP IT!?!? o__o'

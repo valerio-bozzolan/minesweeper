@@ -51,7 +51,8 @@ var DEFAULTS = {
 	"sound": true,
 	"vibration": true,
 	"short_vibration": 25,
-	"win_times": 0
+	"win_times": 0,
+	"language": "default"
 	/*"username": "Mr. Bombarolo", No default*/
 }
 
@@ -85,6 +86,21 @@ var first_tap;
 var bomb_taps;
 var prevent_exit = true;
 var pre_Nx = 0; // To see if settings changed
+
+/**
+ * Localization
+ */
+function do_localization() {
+	var lang = get_option("language");
+	if(lang == "default") {
+		if(app.IS_APP) {
+			lang = navigator.language.split("-")[0];
+		} else {
+			lang = (navigator.language || navigator.userLanguage).split("-")[0];
+		}
+	}
+	html10n.localize(lang);	
+}
 
 /*
  * Game functions
