@@ -36,10 +36,9 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 
-	// jQuery mobile workaround for Localization
 	html10n.bind("localized", function() {
 		console.log("Localized in " + html10n.language);
-		$("select").selectmenu("refresh", true);
+		$("select").selectmenu("refresh", true); // jQuery mobile workaround for refreshing selectmenus
 	});
 
 	field = $(MINESWEEPER.FIELD);
