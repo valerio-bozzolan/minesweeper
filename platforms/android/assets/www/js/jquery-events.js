@@ -34,10 +34,30 @@ $(window).resize(function() {
 	MINESWEEPER.CONTENT_INNER_WIDTH = $("div#content").innerWidth() - 32; // 16px + 16px of padding
 });
 
+/**
+ * Some events are overrided because of the localization triggering,
+ * so here there are some events that must be re-loaded.
+ */
+function set_vulnerable_events() {
+	$("a.my-external").unbind("click"); // Be sure that there is not another one click event.
+
+	// Force external links in stock browser
+	$("a.my-external").click(function () {
+		var addressValue = $(this).attr("href");
+		if(app.IS_APP) {
+			navigator.app.loadUrl(addressValue, { openExternal:true });
+		} else {
+			window.open(addressValue, '_system');
+		}
+		return false;
+	});
+}
+
 $(document).ready(function() {
 
 	html10n.bind("localized", function() {
 		console.log("Localized in " + html10n.language);
+		set_vulnerable_events(); // Some events die when some HTML tag are localized: These events must be re-set
 		$("select").selectmenu("refresh", true); // jQuery mobile workaround for refreshing selectmenus
 	});
 
@@ -56,6 +76,8 @@ $(document).ready(function() {
 	$(".close-new-game-page").click(function() {
 		$("#page-start-new-game").panel("close");
 	});
+
+	set_vulnerable_events();
 
 	MINESWEEPER.CONTENT_INNER_WIDTH = $("div#content").innerWidth() - 32; // 16px + 16px of padding
 
@@ -127,17 +149,6 @@ $(document).ready(function() {
 				play_now(SOUNDS.TAP_NOTHING);
 			}	
 		});
-
-		// Force external links in stock browser
-		$("a.my-external").click(function () {
-			var addressValue = $(this).attr("href");
-			if(app.IS_APP) {
-				navigator.app.loadUrl(addressValue, { openExternal:true });
-			} else {
-				window.open(addressValue, '_system');
-			}
-			return false;
-		});
 	});
 
 	// All-time updates
@@ -152,7 +163,6 @@ $(document).ready(function() {
 	$("select#language").change(function() {
 		set_option("language", $(this).find(":selected").val());
 		$(this).selectmenu("refresh", true );
-		console.log("Changed to " + get_option("language"));
 		do_localization();
 	});
 
@@ -166,14 +176,14 @@ $(document).ready(function() {
 
 		// SOUNDS in DOM if browser
 		for(var jingle in SOUNDS) {
-			SOUNDS[jingle].audio = document.createElement('audio');
-			SOUNDS[jingle].audio.setAttribute('src', SOUNDS[jingle].src );
+			SOUNDS[jingle].audio = document.createElement("audio");
+			SOUNDS[jingle].audio.setAttribute("src", SOUNDS[jingle].src );
 		}
 
 		// SOUNDS loop
 		if(get_option("sound")) {
 			SOUNDS.INTRO_LOOP.audio.play();
-			SOUNDS.INTRO_LOOP.audio.addEventListener('ended', function() {
+			SOUNDS.INTRO_LOOP.audio.addEventListener("ended", function() {
 				this.currentTime = 0;
 				this.play();
 			}, false);
