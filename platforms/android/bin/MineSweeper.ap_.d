@@ -38,7 +38,6 @@
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/lose.png \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/bloccodep.png \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/bomb.png \
-/home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/flags.png \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/logo-32.png \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/logo.png \
 /home/boz/Software Versioned/minesweeper/minesweeper/platforms/android/assets/www/img/background-startup.png \

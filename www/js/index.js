@@ -33,7 +33,6 @@ var app = {
 	// Bind any events that are required on startup. Common events are:
 	// 'load', 'deviceready', 'offline', and 'online'.
 	bindEvents: function() {
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		document.addEventListener("deviceready", this.onDeviceReady, false);
 		document.addEventListener("pause", this.onDevicePause, false);
 		document.addEventListener("backbutton", this.onBackKeyDown, false);
@@ -80,6 +79,7 @@ var app = {
 		$("#popup-help").popup("close");
 
 		// If you are in setting page, turn to main page!
+		$("#page-start-new-game").panel("close");
 		$.mobile.changePage("index.html");
 
 		// Show the "tap another" message

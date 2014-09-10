@@ -299,11 +299,13 @@ function GUI_user_set_bomb(x, y) {
 function GUI_user_set_flag(x, y) {
 	switch(cells[x][y].type) {
 		case TYPE.DEFAULT:
+			vibrate_now(get_option("short_vibration", "d"));
 			cells[x][y].type = TYPE.FLAGGED;
 			increase_flags_counter();
 			GUI_set_flag(x, y);
 			break;
 		case TYPE.FLAGGED:
+			vibrate_now(get_option("short_vibration", "d"));
 			cells[x][y].type = TYPE.DEFAULT;
 			decrease_flags_counter();
 			GUI_set_reset(x, y);
@@ -346,11 +348,13 @@ function GUI_set_nothing(x, y, n) {
 	);
 }
 function GUI_set_side(side) {
+	var num = side - MINESWEEPER.SIDE_BORDERS;
 	field_el
-		.width(side - MINESWEEPER.SIDE_BORDERS)
-		.height(side - MINESWEEPER.SIDE_BORDERS)
-		.css("maxWidth", (side - MINESWEEPER.SIDE_BORDERS) + "px")
-		.css("maxHeight", (side - MINESWEEPER.SIDE_BORDERS) + "px");
+		.width(num)
+		.height(num)
+		.css("maxWidth", (num) + "px")
+		.css("maxHeight", (num) + "px")
+		.css("font-size", (0.8*num) + "px");
 }
 function GUI_bind_cell_events() {
 	field_el.on('tap', function() {
@@ -362,7 +366,6 @@ function GUI_bind_cell_events() {
 		}
 		GUI_user_set_bomb(x, y);
 	}).on('taphold', function() {
-		vibrate_now(get_option("short_vibration", "d"));
 		var x = GUI_get_x(this);
 		var y = GUI_get_y(this);
 		if(first_tap) {
@@ -387,7 +390,7 @@ function GUI_alert_user_win() {
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
-	$("#popup-win").popup("open", {transition: "flow"});
+	$("#popup-win").popup("open");
 	update_stats(true); // true -> win
 }
 function GUI_alert_user_lose() {
@@ -400,7 +403,7 @@ function GUI_alert_user_lose() {
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
 	}
-	$("#popup-lose").popup("open", {transition: "slideup"});
+	$("#popup-lose").popup("open");
 	update_stats(false); // false -> lose
 }
 
