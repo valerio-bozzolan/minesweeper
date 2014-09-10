@@ -88,6 +88,7 @@ $(document).ready(function() {
 		splash.hide();
 		$("#popup-lose").popup("close");
 		$("#popup-win").popup("close");
+		$("#popup-help").popup("close");
 		var bombs = $("#page-start-new-game select[name='bombs']").val();
 		var n_x   = $("#page-start-new-game select[name='n_x']").val();
 		if(!new_game(bombs, n_x)) {
@@ -172,7 +173,7 @@ $(document).ready(function() {
 
 	if(!app.IS_APP) {
 		// Localization
-		html10n.localize(get_option("language"));
+		do_localization();
 
 		// SOUNDS in DOM if browser
 		for(var jingle in SOUNDS) {

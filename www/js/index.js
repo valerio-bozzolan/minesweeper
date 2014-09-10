@@ -33,6 +33,7 @@ var app = {
 	// Bind any events that are required on startup. Common events are:
 	// 'load', 'deviceready', 'offline', and 'online'.
 	bindEvents: function() {
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		document.addEventListener("deviceready", this.onDeviceReady, false);
 		document.addEventListener("pause", this.onDevicePause, false);
 		document.addEventListener("backbutton", this.onBackKeyDown, false);
@@ -73,6 +74,15 @@ var app = {
 		SOUNDS.INTRO_LOOP.audio.pause(); // Would you be so kind to KILL IMMEDIATELY THIS FU***NG JINGLE WHEN I WANT TO STOP IT!?!? o__o'
 	},
 	onBackKeyDown: function() {
+		// First, close all popups!
+		$("#popup-lose").popup("close");
+		$("#popup-win").popup("close");
+		$("#popup-help").popup("close");
+
+		// If you are in setting page, turn to main page!
+		$.mobile.changePage("index.html");
+
+		// Show the "tap another" message
 		GUI_prevent_exit();
 		return false;
 	}
