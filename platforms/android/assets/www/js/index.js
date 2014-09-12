@@ -73,17 +73,12 @@ var app = {
 		SOUNDS.INTRO_LOOP.audio.pause(); // Would you be so kind to KILL IMMEDIATELY THIS FU***NG JINGLE WHEN I WANT TO STOP IT!?!? o__o'
 	},
 	onBackKeyDown: function() {
-		// First, close all popups!
-		$("#popup-lose").popup("close");
-		$("#popup-win").popup("close");
-		$("#popup-help").popup("close");
-
-		// If you are in setting page, turn to main page!
-		$("#page-start-new-game").panel("close");
-		$.mobile.changePage("index.html");
-
-		// Show the "tap another" message
-		GUI_prevent_exit();
+		if($.mobile.activePage.is("#index")){
+			// Show the "tap another" message
+			GUI_prevent_exit();
+		} else{
+			navigator.app.backHistory();
+		}
 		return false;
 	}
 };
