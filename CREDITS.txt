@@ -1,4 +1,4 @@
-Open MineSweeper is under the terms of the GNU General Public License v3,
+Libre MineSweeper is under the terms of the GNU General Public License v3,
 or (at your option) any later version.
 -------------------------------------------------------------------------
 	See the complete license in:

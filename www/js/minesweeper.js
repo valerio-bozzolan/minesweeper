@@ -1,5 +1,5 @@
-/* 
- * Open MineSweeper
+/*
+ * Libre MineSweeper
  * Copyright (C) 2014 Valerio Bozzolan
  *
  * This program is free software: you can redistribute it and/or modify
@@ -398,7 +398,7 @@ function GUI_alert_user_lose() {
 	for(var x=0; x<game_max_x; x++) {
 		for(var y=0; y<game_max_y; y++) {
 			if(cells[x][y].is_bomb) {
-					GUI_set_bomb(x, y);
+				GUI_set_bomb(x, y);
 			}
 			cells[x][y].type = TYPE.NOTHING; // In order to deny clicks
 		}
