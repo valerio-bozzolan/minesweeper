@@ -1,4 +1,4 @@
 *.apk
-platform/android/bin/
-platform/android/gen/
-platform/android/assets/
+platforms/android/assets
+platforms/android/bin
+platforms/android/gen
